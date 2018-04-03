@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import './styles/Register.css'
+
+import './store/UserStore';
+import '../styles/Register.css';
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -51,45 +53,54 @@ class Register extends Component {
                     <div>
                         <label>
                             First Name:
-                            </label>
+                        </label>
                         <input type="text" placeholder="Enter First Name Here..."
                             name="firstName"
                             onChange={this.handleChange} maxLength="10" minLength="4" required />
 
                         <br></br>
                         <label>
-                            Last Name:<input type="text" placeholder="Enter Last Name Here..."
-                                name="lastName" onChange={this.handleChange} required />
+                            Last Name:
                         </label>
+                        <input type="text" placeholder="Enter Last Name Here..."
+                            name="lastName" onChange={this.handleChange} required />
                         <br></br>
                         <label>
-                            Username:<input type="text" placeholder="Enter Username Here..."
-                                name="userName" onChange={this.handleChange} required />
+                            Username:
                         </label>
+                        <input type="text" placeholder="Enter Username Here..."
+                            name="userName" onChange={this.handleChange} required />
+
                         <br></br>
                         <label>
-                            E-Mail:<input type="text" placeholder="Enter Email Here..."
-                                name="email" onChange={this.handleChange} required />
-                        </label>
+                            E-Mail:
+                            </label>
+                        <input type="text" placeholder="Enter Email Here..."
+                            name="email" onChange={this.handleChange} required />
+
                         <br></br>
                         <label>
-                            Password:<input type="text" placeholder="Enter Password Here..."
-                                name="password" onChange={this.handleChange} required />
-                        </label>
+                            Password:
+                            </label>
+                        <input type="text" placeholder="Enter Password Here..."
+                            name="password" onChange={this.handleChange} required />
+
                         <br></br>
                         <label>
-                            Confirm Password:<input type="text" placeholder="Confirm Your Password Here..."
-                                name="confirmPassword" onChange={this.handleChange} required />
-                        </label>
+                            Confirm Password:
+                            </label>
+                        <input type="text" placeholder="Confirm Your Password Here..."
+                            name="confirmPassword" onChange={this.handleChange} required />
+
                         <br></br>
                         <label>
-                            <input type="checkbox"
-                                name="termsAndCondition" value={this.state.termsAndCondition} onChange={this.toggleCheckBox} required />I agree with Terms & Conditions
                         </label>
+                        <input type="checkbox"
+                            name="termsAndCondition" value={this.state.termsAndCondition} onChange={this.toggleCheckBox} required />I agree with Terms & Conditions
                     </div>
                     <button type="submit">Submit</button>
                 </form>
-            </div>
+            </div >
         )
     }
 }

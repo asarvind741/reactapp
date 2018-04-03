@@ -75,3 +75,11 @@ button:hover {
   background-color: antiquewhite;
   padding: 20px;
 }
+
+.label-class {
+  width: 60px;
+}
+
+.input-class {
+  width: 100%;
+}

@@ -14,11 +14,16 @@ export default App; */
 
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
 import Home from './Home';
 import Login from './Login';
 import Header from './Header';
 import Register from './Register';
 import { Navbar } from "react-bootstrap";
+
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends Component {
    render() {
