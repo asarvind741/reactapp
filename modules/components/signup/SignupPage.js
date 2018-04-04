@@ -9,7 +9,7 @@ import { addFlashMessage } from '../actions/addFlashMessage';
 
 class SignupPage extends Component{
     render(){
-       // const { userSignupRequest, addFlashMessage } = this.props;
+       const { userSignupRequest, addFlashMessage } = this.props;
        console.log(this.props);
         return(
            <div className = "row">

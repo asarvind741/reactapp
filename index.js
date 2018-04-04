@@ -22,10 +22,12 @@ import rootReducer from './modules/components/rootReducers';
 
 import thunk from 'redux-thunk';
 import {createStore, applyMiddleware, compose  } from 'redux';
+import ReduxPromise from 'redux-promise';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(ReduxPromise)));
 
-
-const store = createStore(
+/* const store = createStore(
   rootReducer,
   compose(
   // (state = {}) => state,
@@ -33,7 +35,7 @@ const store = createStore(
   window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 )
-
+ */
 ReactDOM.render(
    <Provider store = {store}>
       <Router history = {browserHistory} routes = {routes} />
