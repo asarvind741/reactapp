@@ -5,14 +5,18 @@ import SignupForm from './SignupForm';
 
 import { connect } from 'react-redux';
 import { userSignupRequest } from '../actions/SignupActions';
+import { addFlashMessage } from '../actions/addFlashMessage';
 
 class SignupPage extends Component{
     render(){
-        const userSignupRequest = this.props;
+       // const { userSignupRequest, addFlashMessage } = this.props;
+       console.log(this.props);
         return(
            <div className = "row">
                <div className = "col-lg-4 col-md-offset-4">
-                   <SignupForm userSignupRequest = {userSignupRequest} />
+                   <SignupForm 
+                   userSignupRequest = {userSignupRequest}
+                   addFlashMessage={addFlashMessage}  />
                </div>
            </div>
         );
@@ -20,8 +24,10 @@ class SignupPage extends Component{
 }
 
 SignupPage.propTypes = {
-    userSignupRequest:React.PropTypes.func.isRequired
+    userSignupRequest:React.PropTypes.func.isRequired,
+    addFlashMessage: React.PropTypes.func.isRequired,
+
 }
 
 
-export default connect((state) => {return {} }, {userSignupRequest}) (SignupPage);
+export default connect( null , {userSignupRequest, addFlashMessage}) (SignupPage);

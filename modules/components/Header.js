@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem, Glyphicon } from 'react-bootstrap';
 import Home from './Home';
-import Login from './Login';
 
 class Header extends Component {
     render() {

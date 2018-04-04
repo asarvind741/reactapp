@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 // import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Home from './Home';
-import Login from './Login';
 import Header from './Header';
 import Register from './Register';
 import { Navbar } from "react-bootstrap";
