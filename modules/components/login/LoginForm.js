@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -79,6 +80,8 @@ class LoginForm extends React.Component {
                     />
                 </div>
 
+                <h4> <a href = "/forget-password">Forgot Password?</a></h4>
+                <li><Link to = "/forget-password">Forgot Password?</Link></li>
                 <div className="form-group">
                     <button className="btn btn-primary btn-lg" type="submit">
                         Submit
