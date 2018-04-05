@@ -29,10 +29,8 @@ class SignupForm extends React.Component {
     onSubmit(event) {
         event.preventDefault();
         // axios.post('api/users', {user:this.state});
-        console.log("check me----------------");
         this.props.userSignupRequest(this.state)
             .then(() => {
-                console.log("this is error", err);
                 /* this.props.addFlashMessage({
                     type: 'success',
                     text: `You signed up successfully. Welcome ${this.state.firstname}`
@@ -40,11 +38,12 @@ class SignupForm extends React.Component {
                 this.context.router.push('/') */
             },
             (err) => {
+                this.props.addUser(this.state);
                 this.props.addFlashMessage({
                     type: 'success',
-                    text: `You signed up successfully. Welcome ${this.state.firstname}`
+                    text: `You signed up successfully. Welcome ${this.state.firstname}. Please login to continue with us.`
                 })
-                this.context.router.push('/')
+                this.context.router.push('/login')
                 // this.setState({ errors: err.response.data, isLoading: false })
             }
             )
@@ -54,7 +53,7 @@ class SignupForm extends React.Component {
 
         return (
             <form onSubmit={this.onSubmit}>
-                <h1>Join Our Community</h1>
+                <h1 className = "login-class">Join Our Community</h1>
                 <div className="form-group">
                     <label className="control-label">
                         First Name:
@@ -133,6 +132,7 @@ class SignupForm extends React.Component {
 SignupForm.propTypes = {
     userSignupRequest: React.PropTypes.func.isRequired,
     addFlashMessage: React.PropTypes.func.isRequired,
+    addUser:React.PropTypes.func.isRequired
 }
 
 SignupForm.contextTypes = {

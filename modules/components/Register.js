@@ -33,7 +33,6 @@ class Register extends Component {
     }
 
     handleSubmit(event) {
-        console.log("data------", this.state);
         event.preventDefault();
 
     }

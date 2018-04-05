@@ -3,7 +3,7 @@ import shortid from 'shortid';
 import findIndex from 'lodash/findIndex';
 
 export default (state = [], action = {}) => {
-  console.log(state, action.type);
+  // console.log(state, action.type);
   switch(action.type) {
     case ADD_FLASH_MESSAGE:
       return [
