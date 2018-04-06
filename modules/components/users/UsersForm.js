@@ -1,51 +1,87 @@
 import React from 'react';
+import { deleteUser } from '../actions/TableActions';
+import PersonRow from './PersonRow';
+import {connect} from 'react-redux';
+import { addFlashMessage } from '../actions/addFlashMessage';
+
+
 
 export class UsersForm extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state ={
-            userslist : []
+        this.state = {
+            userslist: [],
+
         };
     }
-    componentDidMount(){
+
+    componentDidMount() {
         this.props.getUsersList().then(response => {
-            if(response.status === 200){
-                this.setState({ userslist:response.usersList});
-                console.log("state user list", this.state.userslist);
+            if (response.status === 200) {
+                this.setState({ userslist: response.usersList });
+                // console.log("state user list", this.state.userslist);
             }
         });
     }
+
+   
     render() {
-        var listedUsers = this.state.userslist.map(function(user) 
-        {
+
+        let rows = this.state.userslist.map(person => {
+            return (
+                <PersonRow key={person.email} data={person} 
+                deleteUser = {this.props.deleteUser}
+                addFlashMessage = {addFlashMessage} />
+            );
+        })
         return (
-            <div>
-                <h4>Here is complete user list</h4>
-                <table className="table" user of usersList>
-                    <thead>
-                        <tr>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">E-Mail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{user.firstName}</td>
-                            <td>{user.lastName}</td>
-                            <td>{user.email}</td>
-                        </tr>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">E-Mail</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows}
                 </tbody>
-               </table>
-        </div>
+            </table>
         );
     }
-)}
 }
 
+/* const PersonRow = (props) => {
+
+    return (
+        <tr>
+            <td>
+                {props.data.firstname}
+            </td>
+            <td>
+                {props.data.lastname}
+            </td>
+            <td>
+                {props.data.email}
+            </td>
+            <td>
+            <input type="button" className="btn btn-primary" value="Edit" /* onClick={this.handleRemoveUser} />
+            </td>
+            <td>
+                <input type="button" className="btn btn-danger" value="Remove" /* onClick={this.handleRemoveUser}  />
+            </td>
+        </tr>
+    )
+} */
+
+
+
 UsersForm.propTypes = {
-    getUsersList: React.PropTypes.func.isRequired
+    getUsersList: React.PropTypes.func.isRequired,
+    deleteUser:React.PropTypes.func.isRequired,
+    addFlashMessage: React.PropTypes.func.isRequired,
 };
 
 UsersForm.contextTypes = {
@@ -53,4 +89,4 @@ UsersForm.contextTypes = {
 }
 
 
-export default UsersForm;
+export default connect(null, {deleteUser, addFlashMessage})(UsersForm);
