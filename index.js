@@ -24,10 +24,14 @@ import thunk from 'redux-thunk';
 import {createStore, applyMiddleware, compose  } from 'redux';
 import ReduxPromise from 'redux-promise';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(ReduxPromise)));
+import { configureFakeBackend } from './modules/components/helpers/FakeBackend';
 
-/* const store = createStore(
+configureFakeBackend();
+
+/* const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(ReduxPromise))); */
+
+const store = createStore(
   rootReducer,
   compose(
   // (state = {}) => state,
@@ -35,7 +39,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(ReduxPro
   window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 )
- */
+
 ReactDOM.render(
    <Provider store = {store}>
       <Router history = {browserHistory} routes = {routes} />

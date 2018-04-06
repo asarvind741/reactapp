@@ -14,6 +14,7 @@ class NavigationBar extends Component {
 
                 <div className = "navbar-collapse">
                     <ul className = "nav navbar-nav">
+                    <li><Link to = "/users" className = "navbar-brand">All Users</Link></li>
                     <li><Link to = "/login" className = "navbar-brand">Login</Link></li>
                     <li><Link to = "/signup" className = "navbar-brand">Sign Up</Link></li>
                         {/* <a href = "#">Sign Up</a> */}

@@ -25,39 +25,35 @@ class LoginForm extends React.Component {
     onSubmit(event) {
         event.preventDefault();
         this.props.loginUserRequest(this.state)
-            .then(() => {
-
-            },
-            (err) => {
-                const users = this.props.users;
-                const checkUserInStore = users.filter(user => user.email === this.state.email);
-                if (checkUserInStore.length>0) {
+            .then((response) => {
+                console.log("resssssss------", response);
+                if(response.status === 200){
                     this.props.addFlashMessage({
                         type: 'success',
-                        text: 'You are logged in now. Enjoy the ride.'
+                        text: 'You are logged in now. Enjoy the ride.' 
                     })
-                    this.context.router.push('/')
+                    this.context.router.push('/');
                 }
                 else {
                     this.props.addFlashMessage({
                         type: 'error',
-                        text: 'You are not registed yet. Please register first to continue.'
-                    })
-                    this.context.router.push('/signup')
+                        text: response.statusText
+                    });
+                    this.context.router.push('/login');
                 }
 
-            }
-            )
+            });
 
     }
     render() {
   
         return (
+            <div>
             <form onSubmit={this.onSubmit}>
                 <h1 className = "login-class">Please Login To conntiue...</h1>
                 <div className="form-group">
                     <label className="control-label">
-                        E-Mmail:
+                        E-Mail:
                     </label>
                     <input
                         type="text"
@@ -79,15 +75,15 @@ class LoginForm extends React.Component {
                         className="form-control"
                     />
                 </div>
-
-                <h4> <a href = "/forget-password">Forgot Password?</a></h4>
-                <li><Link to = "/forget-password">Forgot Password?</Link></li>
                 <div className="form-group">
                     <button className="btn btn-primary btn-lg" type="submit">
                         Submit
                     </button>
                 </div>
             </form>
+            <p><a href="/forget-password">Forgot Password?</a>.</p>
+            <p>Don't have an account? <a href="/signup">Sign Up</a>.</p>
+            </div>
         );
     }
 }

@@ -29,24 +29,35 @@ class SignupForm extends React.Component {
     onSubmit(event) {
         event.preventDefault();
         // axios.post('api/users', {user:this.state});
+        if(this.state.password === this.state.confirmpassword){
         this.props.userSignupRequest(this.state)
-            .then(() => {
-                /* this.props.addFlashMessage({
-                    type: 'success',
-                    text: `You signed up successfully. Welcome ${this.state.firstname}`
-                })
-                this.context.router.push('/') */
-            },
-            (err) => {
-                this.props.addUser(this.state);
+            .then((response) => {
+                console.log("res----------", response);
+                if(response.status == 200){
                 this.props.addFlashMessage({
                     type: 'success',
-                    text: `You signed up successfully. Welcome ${this.state.firstname}. Please login to continue with us.`
-                })
+                    text: `You signed up successfully. Welcome ${this.state.firstname}`
+                });
                 this.context.router.push('/login')
+            }
+            else {
+                //this.props.addUser(this.state);
+                this.props.addFlashMessage({
+                    type: 'error',
+                    text: response.statusText
+                })
+                this.context.router.push('/register')
                 // this.setState({ errors: err.response.data, isLoading: false })
             }
-            )
+            });
+        }
+        else {
+            this.props.addFlashMessage({
+                type: 'info',
+                text: 'Your Password does not match with Confirm Password. Please Try Again!'
+            })
+            this.context.router.push('/signup')
+        }
 
     }
     render() {
@@ -64,6 +75,9 @@ class SignupForm extends React.Component {
                         onChange={this.onChange}
                         name="firstname"
                         className="form-control"
+                        required
+                        minLength = "4"
+                        maxLength = "10"
                     />
                 </div>
 
@@ -77,12 +91,15 @@ class SignupForm extends React.Component {
                         onChange={this.onChange}
                         name="lastname"
                         className="form-control"
+                        required
+                        minLength = "2"
+                        maxLength = "10"
                     />
                 </div>
 
                 <div className="form-group">
                     <label className="control-label">
-                        E-Mmail:
+                        E-Mail:
                     </label>
                     <input
                         type="text"
