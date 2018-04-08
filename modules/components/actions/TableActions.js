@@ -16,6 +16,10 @@ export function deleteUser(userData) {
         body: JSON.stringify(userData)
     };
     return dispatch => {
-        return fetch('/api/user/delete', requestOptions)
+        return fetch('/api/user/delete', requestOptions);
     }
+}
+
+export function updateUserNow(userData) {
+    console.log("user", userData);
 }

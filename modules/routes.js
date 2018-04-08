@@ -7,6 +7,7 @@ import SignupPage from './components/signup/SignupPage';
 import LoginPage from './components/login/LoginPage';
 import ForgotPassword from './components/password-reset/ForgotPassword';
 import Users from './components/users/Users';
+import Company from './components/company/Company';
 
 export default (
   <Route path= "/" component = { App }>
@@ -15,5 +16,6 @@ export default (
     <Route path = "login" component = { LoginPage} />
     <Route path = "forget-password" component = { ForgotPassword } />
     <Route path = "users" component = { Users } />
+    <Route path = "company" component = {Company} />
   </Route>
 )

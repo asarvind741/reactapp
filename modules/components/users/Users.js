@@ -3,11 +3,13 @@ import { Component } from 'react';
 import UsersForm from './UsersForm';
 import { connect } from 'react-redux';
 import { getUsersList } from '../actions/SignupActions';
-import { deleteUser } from '../actions/TableActions'
+import { deleteUser } from '../actions/TableActions';
+
 
 class Users extends React.Component {
+    
     render(){
-        const { getUsersList, onInsertRow, onDeleteRow } = this.props;
+        const { getUsersList} = this.props;
         return (
             <div className = "row">
             <div className = "col-lg-4 col-md-offset-4">

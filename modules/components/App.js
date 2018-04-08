@@ -14,6 +14,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import NavigationBar from './NavigationBar';
 import FlashMessagesList from './flash/FlashMessagesList';
 
+injectTapEventPlugin();
+
 class App extends Component {
    render() {
       return (

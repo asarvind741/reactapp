@@ -3,52 +3,74 @@ import { deleteUser } from '../actions/TableActions';
 import PersonRow from './PersonRow';
 import {connect} from 'react-redux';
 import { addFlashMessage } from '../actions/addFlashMessage';
-
-
-
+import { Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn} from "material-ui/Table";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 export class UsersForm extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             userslist: [],
+            userlistFromChild:[]
 
         };
+        this.myCallback = this.myCallback.bind(this);
+        this.addUser = this.addUser.bind(this);
     }
 
     componentDidMount() {
         this.props.getUsersList().then(response => {
             if (response.status === 200) {
                 this.setState({ userslist: response.usersList });
-                // console.log("state user list", this.state.userslist);
             }
         });
     }
-
-   
+    myCallback (dataFromChild) {
+        this.setState({ userslist: dataFromChild });
+    }
+    addUser(event){
+        console.log("check row method");
+        
+        var row = {
+            id:this.state.userslist.length + 1,
+            firstname:"",
+            lastname:"",
+            email:""
+        };
+        console.log(row);
+        this.state.userslist.push(row);
+        this.setState({})
+        console.log(this.state.userslist);
+    }
     render() {
-
+        console.log("state row", this.state.userslist);
         let rows = this.state.userslist.map(person => {
             return (
                 <PersonRow key={person.email} data={person} 
                 deleteUser = {this.props.deleteUser}
-                addFlashMessage = {addFlashMessage} />
+                addFlashMessage = {this.props.addFlashMessage}
+                myCallback = {this.myCallback} />
             );
         })
         return (
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">E-Mail</th>
+            <div>
+            <button className = "btn btn-primary" onClick ={this.addUser}>Add New User</button>
+            <MuiThemeProvider>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHeaderColumn>First Name</TableHeaderColumn>
+                        <TableHeaderColumn>Last Name</TableHeaderColumn>
+                        <TableHeaderColumn>E-Mail</TableHeaderColumn>
 
-                    </tr>
-                </thead>
-                <tbody>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
                     {rows}
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
+            </MuiThemeProvider>
+            </div>
         );
     }
 }
@@ -81,7 +103,7 @@ export class UsersForm extends React.Component {
 UsersForm.propTypes = {
     getUsersList: React.PropTypes.func.isRequired,
     deleteUser:React.PropTypes.func.isRequired,
-    addFlashMessage: React.PropTypes.func.isRequired,
+    addFlashMessage: React.PropTypes.func.isRequired
 };
 
 UsersForm.contextTypes = {
@@ -89,4 +111,4 @@ UsersForm.contextTypes = {
 }
 
 
-export default connect(null, {deleteUser, addFlashMessage})(UsersForm);
+export default connect(null, { deleteUser, addFlashMessage})(UsersForm);

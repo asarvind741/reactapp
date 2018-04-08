@@ -18,7 +18,7 @@ class NavigationBar extends Component {
                                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DashBoard <span className="caret"></span></a>
                                 <ul className="dropdown-menu">
                                     <li><a href="/users">All Users</a></li>
-                                    <li><a href="">Company Configuration</a></li>
+                                    <li><a href="/company">Company Configuration</a></li>
                                     <li><a href="#">Device Configuration</a></li>
                                 </ul>
                             </li>

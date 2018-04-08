@@ -55,8 +55,3 @@ export function getUsersList(){
         return fetch('api/users', requestOptions)
     };
 }
-
-function handleResponse(response) {
-    console.log("response are====", response);
-    return response.json();
-}
