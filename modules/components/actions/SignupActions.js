@@ -32,6 +32,10 @@ export function loginUserRequest(loginUser) {
     }
 }
 
+export function logout() {
+    return { type: userConstants.LOGOUT };
+}
+
 export function forgotUserRequest(data){
     const requestOptions = {
         method: 'POST',

@@ -6,7 +6,7 @@ import SignupForm from './SignupForm';
 import { connect } from 'react-redux';
 import { userSignupRequest } from '../actions/SignupActions';
 import { addFlashMessage } from '../actions/addFlashMessage';
-import { addUser } from '../actions/users';
+import { addUser } from '../actions/UserActions';
 
 class SignupPage extends Component{
     render(){

@@ -33,7 +33,7 @@ LoginPage.propTypes = {
 }
 
 function mapStateToProps(state){
-    console.log("state----", state);
+    console.log("state is----", state);
     return {
         users: state.users
     }

@@ -4,6 +4,7 @@ import UsersForm from './UsersForm';
 import { connect } from 'react-redux';
 import { getUsersList } from '../actions/SignupActions';
 import { deleteUser } from '../actions/TableActions';
+import './Users.css'
 
 
 class Users extends React.Component {
@@ -12,7 +13,7 @@ class Users extends React.Component {
         const { getUsersList} = this.props;
         return (
             <div className = "row">
-            <div className = "col-lg-4 col-md-offset-4">
+            <div className = "col-lg-4 col-md-offset-4 users-details">
                 <UsersForm 
                 getUsersList = { this.props.getUsersList }
                  />

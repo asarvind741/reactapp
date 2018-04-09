@@ -8,7 +8,8 @@ class LoginForm extends React.Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            isLoggedIn:false
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -32,6 +33,7 @@ class LoginForm extends React.Component {
                         type: 'success',
                         text: 'You are logged in now. Enjoy the ride.' 
                     })
+                    this.state.isLoggedIn = true;
                     this.context.router.push('/');
                 }
                 else {
@@ -39,6 +41,7 @@ class LoginForm extends React.Component {
                         type: 'error',
                         text: response.statusText
                     });
+                    this.state.isLoggedIn = true;
                     this.context.router.push('/login');
                 }
 

@@ -13,13 +13,12 @@ class PersonRow extends React.Component {
         this.state = {
             user: '',
             userslist:'',
-            isEditing:true
+            isEditing:false
         }
         this.handleRemoveUser = this.handleRemoveUser.bind(this);
         this.handleEditUser = this.handleEditUser.bind(this);
         this.saveUser = this.saveUser.bind(this);
         this.updateUser = this.updateUser.bind(this);
-
     }
 
     componentDidMount() {
@@ -48,6 +47,21 @@ class PersonRow extends React.Component {
 
 
     handleEditUser(){
+        this.props.updateUserNow(this.state.user).then(response=>{
+            if(response.status === 200){
+                this.props.myCallback (response.users);
+                this.props.addFlashMessage({
+                    type: 'success',
+                    text: response.statusText
+                });
+            }
+            else{
+                this.props.addFlashMessage({
+                    type: 'error',
+                    text: response.statusText
+                });
+            }
+        });
         if(this.state.isEditing == false)
         this.setState({isEditing: true});
         else if(this.state.isEditing == true)
@@ -65,8 +79,11 @@ class PersonRow extends React.Component {
     }
 
     updateUser(event){
+        let user = this.state.user;
         console.log(event.target.value);
-        updateUserNow(event)
+        console.log(event.target.name)
+        user[event.target.name]= event.target.value;
+        this.setState(user);
         
     }
 
@@ -77,23 +94,23 @@ class PersonRow extends React.Component {
         return (
             <MuiThemeProvider>
             <TableRow>
-                <TableRowColumn>{ isEditing ? ( <TextField name = {row.firstname} onChange = {this.updateUser} />):
+                <TableRowColumn>{ isEditing ? ( <TextField name = "firstname" onChange = {this.updateUser} value = {row.firstname}/>):
                 ( row.firstname)
                 }
                 </TableRowColumn>
                 <TableRowColumn>
-                    { isEditing ? ( <TextField name = {row.lastname} value = {row.lastname}/>):
+                    { isEditing ? ( <TextField name = "lastname" onChange = {this.updateUser} value = {row.lastname}/>):
                 ( row.lastname)
                 }</TableRowColumn>
                 <TableRowColumn>
-                    { isEditing ? ( <TextField name = {row.email} value = {row.email}/>):
+                    { isEditing ? ( <TextField name = "email" onChange = {this.updateUser} value = {row.email}/>):
                 ( row.email)
                 }</TableRowColumn>
                 <TableRowColumn>
                 { isEditing ? (
-                <EditIcon onClick={this.handleEditUser}/>
+                <CheckIcon onClick={this.handleEditUser}/>
                 ) : (
-               <CheckIcon onClick={this.saveUser} />
+               <EditIcon onClick={this.saveUser} />
                  )}
                 </TableRowColumn>
 

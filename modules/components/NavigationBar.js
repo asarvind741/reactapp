@@ -20,6 +20,7 @@ class NavigationBar extends Component {
                                     <li><a href="/users">All Users</a></li>
                                     <li><a href="/company">Company Configuration</a></li>
                                     <li><a href="#">Device Configuration</a></li>
+                                    <li><a href="/settings">Settings</a></li>
                                 </ul>
                             </li>
                             <li className = "not-for-dropdown"><Link to="/login" className="navbar-brand">Login</Link></li>

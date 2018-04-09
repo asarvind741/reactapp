@@ -1,3 +1,5 @@
+import sha256 from 'sha256';
+
 let users = JSON.parse(localStorage.getItem('users')) || [];
 export function configureFakeBackend() {
     let realFetch = window.fetch;
@@ -14,7 +16,6 @@ export function configureFakeBackend() {
                         return user.email === newUser.email;
                     }).length;
                     if (duplicateUser) {
-                        console.log("duplicate");
                         resolve({
                             status: 401,
                             statusText: 'Username "' + newUser.email + '" is already taken'
@@ -24,6 +25,8 @@ export function configureFakeBackend() {
 
                     // save new user
                     newUser.id = users.length ? Math.max(...users.map(user => user.id)) + 1 : 1;
+                    newUser.password = sha256(newUser.password)
+                    newUser.confirmpassword = sha256(newUser.confirmpassword)
                     users.push(newUser);
                     localStorage.setItem('users', JSON.stringify(users));
                     console.log('users are-----', users);
@@ -41,9 +44,10 @@ export function configureFakeBackend() {
                     let params = JSON.parse(opts.body);
 
                     let filteredUsers = users.filter(user => {
-                        return user.email === params.email && user.password === params.password;
+                        return user.email === params.email && user.password === sha256(params.password);
                     });
                     if (filteredUsers.length > 0) {
+                        
                         let user = filteredUsers[0];
                         resolve({
                             status: 200,
@@ -102,6 +106,20 @@ export function configureFakeBackend() {
                             users.splice(i, 1);
                             localStorage.setItem('users', JSON.stringify(users));
                             resolve({status:200, statusText:`${deleteUser.email} have been successfully deleted`, users:users});
+                            return;
+                        }
+                    }
+                }
+
+                if (url.endsWith('/api/user/updateUser') && opts.method === 'POST') {
+                    let updatedUser = JSON.parse(opts.body);
+                    console.log('update user id', updatedUser.id);
+
+                    for(let i = 0; i<users.length; i++){
+                        if(users[i].id === updatedUser.id){
+                            users.splice(i, 1,updatedUser);
+                            localStorage.setItem('users', JSON.stringify(users));
+                            resolve({status:200, statusText:`${updatedUser.email} have been successfully updated`, users:users});
                             return;
                         }
                     }

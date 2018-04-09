@@ -1,10 +1,12 @@
 import React from 'react';
-import { deleteUser } from '../actions/TableActions';
+import { deleteUser,updateUserNow } from '../actions/TableActions';
 import PersonRow from './PersonRow';
 import {connect} from 'react-redux';
 import { addFlashMessage } from '../actions/addFlashMessage';
 import { Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn} from "material-ui/Table";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+
+
 export class UsersForm extends React.Component {
 
     constructor(props) {
@@ -48,6 +50,7 @@ export class UsersForm extends React.Component {
             return (
                 <PersonRow key={person.email} data={person} 
                 deleteUser = {this.props.deleteUser}
+                updateUserNow = {this.props.updateUserNow}
                 addFlashMessage = {this.props.addFlashMessage}
                 myCallback = {this.myCallback} />
             );
@@ -111,4 +114,4 @@ UsersForm.contextTypes = {
 }
 
 
-export default connect(null, { deleteUser, addFlashMessage})(UsersForm);
+export default connect(null, { deleteUser, addFlashMessage,updateUserNow})(UsersForm);
