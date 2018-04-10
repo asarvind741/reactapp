@@ -5,14 +5,15 @@ import LoginForm from './LoginForm';
 
 import { connect } from 'react-redux';
 import { addFlashMessage } from '../actions/addFlashMessage';
-import { loginUserRequest } from '../actions/SignupActions';
+import { loginUserRequest } from '../../services/SignupService';
+import { addUser } from '../actions/UserActions';
 
 
 class LoginPage extends Component{
     render(){
         const users = this.props.users;
         console.log("users", users);
-        const { addFlashMessage, loginUserRequest } = this.props;
+        const { addFlashMessage, loginUserRequest, addUser} = this.props;
         return(
            <div className = "row">
                <div className = "col-lg-4 col-md-offset-4">
@@ -20,6 +21,7 @@ class LoginPage extends Component{
                    addFlashMessage={addFlashMessage}
                    loginUserRequest={loginUserRequest}
                    users = {users}
+                   addUser = { addUser}
                     />
                </div>
            </div>
@@ -29,14 +31,15 @@ class LoginPage extends Component{
 
 LoginPage.propTypes = {
     loginUserRequest:React.PropTypes.func.isRequired,
-    addFlashMessage: React.PropTypes.func.isRequired
+    addFlashMessage: React.PropTypes.func.isRequired,
+    addUser:React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state){
     console.log("state is----", state);
     return {
-        users: state.users
+        user: state.user
     }
 }
 
-export default connect(mapStateToProps, {addFlashMessage, loginUserRequest})(LoginPage);
+export default connect(mapStateToProps, {addFlashMessage, loginUserRequest, addUser})(LoginPage);

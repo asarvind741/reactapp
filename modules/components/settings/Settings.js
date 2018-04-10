@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import {updateUserNow} from '../actions/TableActions';
+import {updateUserNow} from '../../services/UserService';
 import { connect } from 'react-redux';
 import { addFlashMessage } from '../actions/addFlashMessage';
 import DropDownMenu from 'material-ui/DropDownMenu';

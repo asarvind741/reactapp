@@ -2,8 +2,8 @@ import React from 'react';
 import { Component } from 'react';
 import UsersForm from './UsersForm';
 import { connect } from 'react-redux';
-import { getUsersList } from '../actions/SignupActions';
-import { deleteUser } from '../actions/TableActions';
+import { getUsersList } from '../../services/SignupService';
+import { deleteUser } from '../../services/UserService';
 import './Users.css'
 
 

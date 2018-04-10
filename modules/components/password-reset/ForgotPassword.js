@@ -5,7 +5,7 @@ import ForgotPasswordForm from './ForgotPasswordForm';
 
 import { connect } from 'react-redux';
 import { addFlashMessage } from '../actions/addFlashMessage';
-import { forgotUserRequest } from '../actions/SignupActions';
+import { forgotUserRequest } from '../../services/SignupService';
 
 
 class ForgotPassword extends Component{
