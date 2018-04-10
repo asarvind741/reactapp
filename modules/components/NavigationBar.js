@@ -9,7 +9,6 @@ class NavigationBar extends Component {
                 <div className="container-fluid">
                     <div className="navbar-header">
                         <Link to="/" className="navbar-brand">React</Link>
-                        <a className = "navbar-brand" href = "#">React</a>
                     </div>
 
                     <div className="navbar-collapse">

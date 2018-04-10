@@ -2,6 +2,9 @@ import React from 'react';
 import { PropTypes } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
+import { Card, CardTitle } from 'material-ui/Card';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import './Login.css';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -51,8 +54,9 @@ class LoginForm extends React.Component {
     render() {
   
         return (
-            <div>
-            <form onSubmit={this.onSubmit}>
+            <MuiThemeProvider>
+            <Card className="container login-container">
+            <form onSubmit={this.onSubmit} className = "form-login">
                 <h1 className = "login-class">Please Login To conntiue...</h1>
                 <div className="form-group">
                     <label className="control-label">
@@ -86,7 +90,8 @@ class LoginForm extends React.Component {
             </form>
             <p><a href="/forget-password">Forgot Password?</a>.</p>
             <p>Don't have an account? <a href="/signup">Sign Up</a>.</p>
-            </div>
+            </Card>
+            </MuiThemeProvider>
         );
     }
 }

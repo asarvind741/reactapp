@@ -1,12 +1,16 @@
 import React from 'react';
 import { Component } from 'react';
+import { Card, CardTitle } from 'material-ui/Card';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class Greetings extends Component {
     render(){
     return (
-        <div className = "jumbotron">
-        <h1>Hi !!!</h1>
-        </div>
+        <MuiThemeProvider>
+        <Card className="container">
+        <CardTitle title="React Application" subtitle="This is the home page." />
+        </Card>
+        </MuiThemeProvider>
     );
 }
 }
