@@ -3,6 +3,7 @@ import { Component } from 'react';
 import { Card, CardTitle } from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // https://embed.plnkr.co/plunk/OY91qM
+// https://github.com/cornflourblue/react-redux-registration-login-example/blob/master/src/HomePage/HomePage.jsx
 
 import LoginForm from './LoginForm';
 

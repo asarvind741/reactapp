@@ -14,12 +14,12 @@ class NavigationBar extends Component {
                     <div className="navbar-collapse">
                         <ul className="nav navbar-nav">
                             <li className="dropdown">
-                                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DashBoard <span className="caret"></span></a>
+                                <Link to="#" className="dropdown-toggle navbar-dropdown" data-toggle="dropdown" role="button"  aria-expanded="false">DashBoard <span className="caret"></span></Link>
                                 <ul className="dropdown-menu">
-                                    <li><a href="/users">All Users</a></li>
-                                    <li><a href="/company">Company Configuration</a></li>
-                                    <li><a href="#">Device Configuration</a></li>
-                                    <li><a href="/settings">Settings</a></li>
+                                    <li><a className = "dropdown-list-options" href="/users">All Users</a></li>
+                                    <li><a className = "dropdown-list-options" href="/company">Company Configuration</a></li>
+                                    <li><a className = "dropdown-list-options" href="#">Device Configuration</a></li>
+                                    <li><a className = "dropdown-list-options" href="/settings">Settings</a></li>
                                 </ul>
                             </li>
                             <li className = "not-for-dropdown"><Link to="/login" className="navbar-brand">Login</Link></li>
