@@ -1,7 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'react';
 import axios from 'axios';
-
+import { Card, CardTitle } from 'material-ui/Card';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import './Signup.css';
 class SignupForm extends React.Component {
     constructor(props) {
         super(props);
@@ -63,7 +65,9 @@ class SignupForm extends React.Component {
     render() {
 
         return (
-            <form onSubmit={this.onSubmit}>
+            <MuiThemeProvider>
+            <Card className="container signup-container">
+            <form onSubmit={this.onSubmit} className = "form-signup">
                 <h1 className = "login-class">Join Our Community</h1>
                 <div className="form-group">
                     <label className="control-label">
@@ -74,7 +78,7 @@ class SignupForm extends React.Component {
                         value={this.state.firstname}
                         onChange={this.onChange}
                         name="firstname"
-                        className="form-control"
+                        className="form-control signup-formcontrol"
                         required
                         minLength = "4"
                         maxLength = "10"
@@ -142,6 +146,8 @@ class SignupForm extends React.Component {
                     </button>
                 </div>
             </form>
+            </Card>
+            </MuiThemeProvider> 
         );
     }
 }

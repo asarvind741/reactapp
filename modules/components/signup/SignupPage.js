@@ -8,33 +8,30 @@ import { userSignupRequest } from '../../services/SignupService';
 import { addFlashMessage } from '../actions/addFlashMessage';
 import { addUser } from '../actions/UserActions';
 
-class SignupPage extends Component{
-    render(){
-       const { userSignupRequest, addFlashMessage, addUser } = this.props;
-        return(
-           <div className = "row">
-               <div className = "col-lg-4 col-md-offset-4">
-                   <SignupForm 
-                   userSignupRequest = {userSignupRequest}
-                   addFlashMessage={addFlashMessage}
-                   addUser = { addUser} />
-               </div>
-           </div>
+class SignupPage extends Component {
+    render() {
+        const { userSignupRequest, addFlashMessage, addUser } = this.props;
+        return (
+
+            <SignupForm
+                userSignupRequest={userSignupRequest}
+                addFlashMessage={addFlashMessage}
+                addUser={addUser} />
         );
     }
 }
 
 SignupPage.propTypes = {
-    userSignupRequest:React.PropTypes.func.isRequired,
+    userSignupRequest: React.PropTypes.func.isRequired,
     addFlashMessage: React.PropTypes.func.isRequired,
     addUser: React.PropTypes.func.isRequired
 
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         users: state.users
     }
 }
 
-export default connect( null , {userSignupRequest, addFlashMessage, addUser}) (SignupPage);
+export default connect(null, { userSignupRequest, addFlashMessage, addUser })(SignupPage);

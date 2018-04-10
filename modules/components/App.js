@@ -4,7 +4,6 @@ import { render } from 'react-dom';
 
 import Home from './Home';
 import Header from './Header';
-import Register from './Register';
 import { Navbar } from "react-bootstrap";
 
 import injectTapEventPlugin from 'react-tap-event-plugin';

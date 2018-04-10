@@ -3,8 +3,14 @@ import { deleteUser,updateUserNow } from '../../services/UserService';
 import PersonRow from './PersonRow';
 import {connect} from 'react-redux';
 import { addFlashMessage } from '../actions/addFlashMessage';
-import { Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn} from "material-ui/Table";
+import { Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn, TablePagination,
+        TableSortLabel} from "material-ui/Table";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import { withStyles } from 'material-ui/styles';
+import Toolbar from 'material-ui/Toolbar';
+import Paper from 'material-ui/Paper';
+import Checkbox from 'material-ui/Checkbox';
+import IconButton from 'material-ui/IconButton';
 
 
 export class UsersForm extends React.Component {
@@ -48,7 +54,7 @@ export class UsersForm extends React.Component {
         console.log("state row", this.state.userslist);
         let rows = this.state.userslist.map(person => {
             return (
-                <PersonRow key={person.email} data={person} 
+                <PersonRow key={person.id} data={person} 
                 deleteUser = {this.props.deleteUser}
                 updateUserNow = {this.props.updateUserNow}
                 addFlashMessage = {this.props.addFlashMessage}
