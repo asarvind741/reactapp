@@ -37,11 +37,5 @@ class NavigationBar extends Component {
     }
 }
 
-function mapStateToProps(state){
-    console.log("state is----", state);
-    return {
-        isLoggedIn: state.users[0].isLoggedIn
-    }
-}
 
 export default NavigationBar;
