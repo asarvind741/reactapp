@@ -2,13 +2,10 @@ import React from 'react';
 import { PropTypes } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
-<<<<<<< HEAD
-=======
 import { Card, CardTitle } from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './Login.css';
 
->>>>>>> d9736b1faacd6c62eb786bacce23f74974feec9d
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);

@@ -18,7 +18,7 @@ export function editUser(user){
 
 export function deleteUser(users){
     return {
-        type: EDIT_USER,
+        type: DELETE_USER,
         user
       }
 }

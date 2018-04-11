@@ -17,41 +17,22 @@ class LoginPage extends Component {
     render() {
         const users = this.props.users;
         console.log("users", users);
-<<<<<<< HEAD
         const { addFlashMessage, loginUserRequest, addUser} = this.props;
         return(
-           <div className = "row">
-               <div className = "col-lg-4 col-md-offset-4">
-                   <LoginForm 
+                <LoginForm 
                    addFlashMessage={addFlashMessage}
                    loginUserRequest={loginUserRequest}
                    users = {users}
                    addUser = { addUser}
                     />
-               </div>
-           </div>
-=======
-        const { addFlashMessage, loginUserRequest } = this.props;
-        return (
-            <LoginForm
-                addFlashMessage={addFlashMessage}
-                loginUserRequest={loginUserRequest}
-                users={users}
-            />
->>>>>>> d9736b1faacd6c62eb786bacce23f74974feec9d
         );
     }
 }
 
 LoginPage.propTypes = {
-<<<<<<< HEAD
     loginUserRequest:React.PropTypes.func.isRequired,
     addFlashMessage: React.PropTypes.func.isRequired,
     addUser:React.PropTypes.func.isRequired
-=======
-    loginUserRequest: React.PropTypes.func.isRequired,
-    addFlashMessage: React.PropTypes.func.isRequired
->>>>>>> d9736b1faacd6c62eb786bacce23f74974feec9d
 }
 
 function mapStateToProps(state) {
@@ -61,8 +42,4 @@ function mapStateToProps(state) {
     }
 }
 
-<<<<<<< HEAD
 export default connect(mapStateToProps, {addFlashMessage, loginUserRequest, addUser})(LoginPage);
-=======
-export default connect(mapStateToProps, { addFlashMessage, loginUserRequest })(LoginPage);
->>>>>>> d9736b1faacd6c62eb786bacce23f74974feec9d
