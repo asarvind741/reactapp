@@ -1,18 +1,12 @@
-import { SET_CURRENT_USER } from '../actions/types';
-import isEmpty from 'lodash/isEmpty';
+export function setAutherization(user){
+  console.log("user", user);
+  user =JSON.stringify(user);
+  localStorage.setItem('currentUser', user);
+  console.log("local------", localStorage.getItem('currentUser'));
+}
 
-const initialState = {
-  isAuthenticated: false,
-  user: {}
-};
-
-export default (state = initialState, action = {}) => {
-  switch(action.type) {
-    case SET_CURRENT_USER:
-      return {
-        isAuthenticated: !isEmpty(action.user),
-        user: action.user
-      };
-    default: return state;
-  }
+export function logoutUser(){
+  console.log("removed user from storage");
+  localStorage.removeItem('currentUser');
+  console.log("removed user from storage");
 }

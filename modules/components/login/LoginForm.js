@@ -33,14 +33,14 @@ class LoginForm extends React.Component {
         this.props.loginUserRequest(this.state)
             .then((response) => {
                 this.props.addUser(response.user);
-                localStorage.setItem('currentUser', response.user);
+                // localStorage.setItem('currentUser', response.user);
                 if(response.status === 200){
                     this.props.addFlashMessage({
                         type: 'success',
                         text: response.statusText 
                     });
                     this.context.router.push('/');
-                    
+                    this.props.setAutherization(response.user)
                 }
                 else {
                     this.props.addFlashMessage({

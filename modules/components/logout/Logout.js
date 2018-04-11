@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../services/SignupService';
+import { logoutUser } from '../helpers/Auth';
 import LoginPage from '../login/LoginPage';
 
 class Logout extends React.Component{
     componentWillMount () {
         console.log(localStorage.getItem('currentUser'));
         localStorage.removeItem('currentUser');
-        this.context.router.push('/');
+        this.context.router.push('/login');
     }
     
     render(){
