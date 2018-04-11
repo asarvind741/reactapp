@@ -4,7 +4,7 @@ import { Card, CardTitle } from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // https://embed.plnkr.co/plunk/OY91qM
 // https://github.com/cornflourblue/react-redux-registration-login-example/blob/master/src/HomePage/HomePage.jsx
-
+// http://www.lorejs.org/quickstart/authentication/step-5/
 import LoginForm from './LoginForm';
 
 import { connect } from 'react-redux';

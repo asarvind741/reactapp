@@ -10,6 +10,7 @@ import Users from './components/users/Users';
 import Company from './components/company/Company';
 import Settings from './components/settings/Settings';
 import Logout from './components/logout/Logout';
+
 // import withStyles from './components/users/withStyles';
 
 export default (

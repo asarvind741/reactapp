@@ -12,6 +12,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import NavigationBar from './NavigationBar';
 import FlashMessagesList from './flash/FlashMessagesList';
+import Footer from './footer/Footer';
 
 injectTapEventPlugin();
 
@@ -22,7 +23,11 @@ class App extends Component {
              <NavigationBar />
              <FlashMessagesList />
              { this.props.children }
+             <div>
+               <Footer />
+             </div>
         </div>
+
       );
    }
 }
