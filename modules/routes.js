@@ -9,6 +9,8 @@ import ForgotPassword from './components/password-reset/ForgotPassword';
 import Users from './components/users/Users';
 import Company from './components/company/Company';
 import Settings from './components/settings/Settings';
+import Logout from './components/logout/Logout';
+
 // import withStyles from './components/users/withStyles';
 
 export default (
@@ -20,6 +22,7 @@ export default (
     <Route path = "users" component = { Users } />
     <Route path = "company" component = {Company} />
     <Route path = 'settings' component = {Settings} />
+    <Route path = 'logout' component = {Logout} />
     {/* <Route path = "test" component = { withStyles} /> */}
   </Route>
 )

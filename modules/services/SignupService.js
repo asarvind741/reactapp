@@ -1,13 +1,6 @@
+import {ADD_USER } from '../components/actions/UserActions';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import { SET_CURRENT_USER } from './types';
-
-export function setCurrentUser(user) {
-  return {
-    type: SET_CURRENT_USER,
-    user
-  };
-}
 
 export function userSignupRequest(user) {
     const requestOptions = {
@@ -22,11 +15,6 @@ export function userSignupRequest(user) {
     }
 }
 
-export function isUserExists(identifier) {
-    return dispatch => {
-        return axios.get(`/api/users/${identifier}`);
-    }
-}
 
 export function loginUserRequest(loginUser) {
     const requestOptions = {
@@ -38,11 +26,22 @@ export function loginUserRequest(loginUser) {
     };
     return dispatch =>{
     return fetch('api/user/login', requestOptions);
+    
     }
+    
 }
 
-export function logout() {
-    return { type: userConstants.LOGOUT };
+export function logoutUser(logoutUser) {
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(logoutUser)
+    };
+    return dispatch =>{
+        return fetch('api/user/logout', requestOptions);
+}
 }
 
 export function forgotUserRequest(data){

@@ -5,7 +5,7 @@ import CheckIcon from "material-ui/svg-icons/navigation/check";
 import TextField from "material-ui/TextField";
 import { Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn} from "material-ui/Table";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import updateUserNow from '../actions/TableActions';
+import updateUserNow from '../../services/UserService';
 
 class PersonRow extends React.Component {
     constructor(props) {

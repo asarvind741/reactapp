@@ -5,8 +5,8 @@ export default (state = [], action ={}) => {
         case ADD_USER:
             return [
                 ...state,
-                action.user 
-            ]
+                action.user
+            ];
 
         case EDIT_USER:
             const filteredUsers = state.filter(user => user.email === action.payload.user.email);
@@ -14,7 +14,7 @@ export default (state = [], action ={}) => {
             if (isUserExist) {
                 const updatedUser = {
 
-                }
+                };
             }
             return state;
         default:

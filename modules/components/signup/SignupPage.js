@@ -4,7 +4,7 @@ import { Component } from 'react';
 import SignupForm from './SignupForm';
 
 import { connect } from 'react-redux';
-import { userSignupRequest } from '../actions/SignupActions';
+import { userSignupRequest } from '../../services/SignupService';
 import { addFlashMessage } from '../actions/addFlashMessage';
 import { addUser } from '../actions/UserActions';
 

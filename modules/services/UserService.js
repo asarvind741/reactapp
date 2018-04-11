@@ -1,10 +1,4 @@
-export function onInsertRow(row) {
-    let newRowStr = ''
-
-    for (const prop in row) {
-        return newRowStr += prop + ': ' + row[prop] + ' \n'
-    }
-}
+import {ADD_USER } from '../components/actions/UserActions';
 
 export function deleteUser(userData) {
     console.log("user", userData);

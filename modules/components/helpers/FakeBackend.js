@@ -29,12 +29,12 @@ export function configureFakeBackend() {
                     newUser.confirmpassword = sha256(newUser.confirmpassword)
                     users.push(newUser);
                     localStorage.setItem('users', JSON.stringify(users));
-                    console.log('users are-----', users);
 
                     // respond 200 OK
                     resolve({
                         status: 200,
-                        statusText: 'ok'
+                        statusText: `Congratulations. ${newUser.email} has been registered successfully. Please Login now to continue`,
+                        user:newUser
                     });
 
                     return;
@@ -49,9 +49,12 @@ export function configureFakeBackend() {
                     if (filteredUsers.length > 0) {
                         
                         let user = filteredUsers[0];
+                        user.isLoggedIn = params.isLoggedIn;
+                        console.log("here is the user---", user);
                         resolve({
                             status: 200,
-                            statusText: user
+                            statusText: 'You are logged in now. Please continue surfing...',
+                            user:user
                         });
                         return;
 
@@ -123,6 +126,11 @@ export function configureFakeBackend() {
                             return;
                         }
                     }
+                }
+
+                if(url.endsWith('api/user/logout') && opts.method === 'POST'){
+                    console.log(opts.body);
+
                 }
 
             })

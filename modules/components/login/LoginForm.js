@@ -25,28 +25,32 @@ class LoginForm extends React.Component {
             }
         );
     }
+    
 
     onSubmit(event) {
         event.preventDefault();
+        this.state.isLoggedIn = true;
         this.props.loginUserRequest(this.state)
             .then((response) => {
-                console.log("resssssss------", response);
+                this.props.addUser(response.user);
+                localStorage.setItem('currentUser', response.user);
                 if(response.status === 200){
                     this.props.addFlashMessage({
                         type: 'success',
-                        text: 'You are logged in now. Enjoy the ride.' 
-                    })
-                    this.state.isLoggedIn = true;
+                        text: response.statusText 
+                    });
                     this.context.router.push('/');
+                    
                 }
                 else {
                     this.props.addFlashMessage({
                         type: 'error',
                         text: response.statusText
                     });
-                    this.state.isLoggedIn = true;
+                    this.state.isLoggedIn = false;
                     this.context.router.push('/login');
                 }
+                this.props.addUser(response.user);
 
             });
 

@@ -4,6 +4,8 @@ import '../styles/NavigationBar.css';
 
 class NavigationBar extends Component {
     render() {
+        const isLoggedIn = localStorage.getItem('currentUser');
+        console.log("logged", isLoggedIn);
         return (
             <nav className="navbar navbar-default">
                 <div className="container-fluid">
@@ -22,13 +24,23 @@ class NavigationBar extends Component {
                                     <li><a className = "dropdown-list-options" href="/settings">Settings</a></li>
                                 </ul>
                             </li>
+                            {(!isLoggedIn)?
                             <li className = "not-for-dropdown"><Link to="/login" className="navbar-brand">Login</Link></li>
+                            : <li className = "not-for-dropdown"><Link to="/logout" className="navbar-brand">Logout</Link></li>
+                            }
                             <li className = "not-for-dropdown"><Link to="/signup" className="navbar-brand">Sign Up</Link></li>
                         </ul>
                     </div>
                 </div>
             </nav>
         )
+    }
+}
+
+function mapStateToProps(state){
+    console.log("state is----", state);
+    return {
+        isLoggedIn: state.users[0].isLoggedIn
     }
 }
 

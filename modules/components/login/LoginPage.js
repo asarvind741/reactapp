@@ -4,39 +4,42 @@ import { Card, CardTitle } from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // https://embed.plnkr.co/plunk/OY91qM
 // https://github.com/cornflourblue/react-redux-registration-login-example/blob/master/src/HomePage/HomePage.jsx
-
+// http://www.lorejs.org/quickstart/authentication/step-5/
 import LoginForm from './LoginForm';
 
 import { connect } from 'react-redux';
 import { addFlashMessage } from '../actions/addFlashMessage';
-import { loginUserRequest } from '../actions/SignupActions';
+import { loginUserRequest } from '../../services/SignupService';
+import { addUser } from '../actions/UserActions';
 
 
 class LoginPage extends Component {
     render() {
         const users = this.props.users;
         console.log("users", users);
-        const { addFlashMessage, loginUserRequest } = this.props;
-        return (
-            <LoginForm
-                addFlashMessage={addFlashMessage}
-                loginUserRequest={loginUserRequest}
-                users={users}
-            />
+        const { addFlashMessage, loginUserRequest, addUser} = this.props;
+        return(
+                <LoginForm 
+                   addFlashMessage={addFlashMessage}
+                   loginUserRequest={loginUserRequest}
+                   users = {users}
+                   addUser = { addUser}
+                    />
         );
     }
 }
 
 LoginPage.propTypes = {
-    loginUserRequest: React.PropTypes.func.isRequired,
-    addFlashMessage: React.PropTypes.func.isRequired
+    loginUserRequest:React.PropTypes.func.isRequired,
+    addFlashMessage: React.PropTypes.func.isRequired,
+    addUser:React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
     console.log("state is----", state);
     return {
-        users: state.users
+        user: state.user
     }
 }
 
-export default connect(mapStateToProps, { addFlashMessage, loginUserRequest })(LoginPage);
+export default connect(mapStateToProps, {addFlashMessage, loginUserRequest, addUser})(LoginPage);

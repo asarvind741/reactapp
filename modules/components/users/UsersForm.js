@@ -1,5 +1,5 @@
 import React from 'react';
-import { deleteUser,updateUserNow } from '../actions/TableActions';
+import { deleteUser,updateUserNow } from '../../services/UserService';
 import PersonRow from './PersonRow';
 import {connect} from 'react-redux';
 import { addFlashMessage } from '../actions/addFlashMessage';
