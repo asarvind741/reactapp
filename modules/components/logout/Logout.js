@@ -5,25 +5,21 @@ import LoginPage from '../login/LoginPage';
 
 class Logout extends React.Component{
     componentWillMount () {
-        console.log(this.props.user);
-        logoutUser();
+        console.log(localStorage.getItem('currentUser'));
+        localStorage.removeItem('currentUser');
         this.context.router.push('/');
     }
     
     render(){
-        const { user } = this.props.user;
-             return null;
+             return (
+                 <h4>Logging out. Please wait...</h4>
+             )
     }
 }
-function mapStateToProps(state) {
-    console.log("state is----", state);
-    return {
-        user: state.user
-    }
-}
+
 
 Logout.contextTypes = {
     router: React.PropTypes.object.isRequired
 }
 
-export default connect(mapStateToProps)(Logout);
+export default connect()(Logout);

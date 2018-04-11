@@ -4,7 +4,8 @@ import '../styles/NavigationBar.css';
 
 class NavigationBar extends Component {
     render() {
-        const isLoggedIn = this.props.isLoggedIn;
+        const isLoggedIn = localStorage.getItem('currentUser');
+        console.log("logged", isLoggedIn);
         return (
             <nav className="navbar navbar-default">
                 <div className="container-fluid">
@@ -23,7 +24,7 @@ class NavigationBar extends Component {
                                     <li><a className = "dropdown-list-options" href="/settings">Settings</a></li>
                                 </ul>
                             </li>
-                            {(isLoggedIn)?
+                            {(!isLoggedIn)?
                             <li className = "not-for-dropdown"><Link to="/login" className="navbar-brand">Login</Link></li>
                             : <li className = "not-for-dropdown"><Link to="/logout" className="navbar-brand">Logout</Link></li>
                             }
