@@ -6,6 +6,8 @@ import { setAutherization } from '../helpers/Auth';
 // https://embed.plnkr.co/plunk/OY91qM
 // https://github.com/cornflourblue/react-redux-registration-login-example/blob/master/src/HomePage/HomePage.jsx
 // http://www.lorejs.org/quickstart/authentication/step-5/
+// https://github.com/bonham000/react-quiz-app/tree/master/src
+
 import LoginForm from './LoginForm';
 
 import { connect } from 'react-redux';
