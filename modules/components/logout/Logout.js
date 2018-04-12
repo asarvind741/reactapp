@@ -6,9 +6,8 @@ import LoginPage from '../login/LoginPage';
 class Logout extends React.Component{
     componentWillMount () {
         console.log(localStorage.getItem('currentUser'));
-        // localStorage.removeItem('currentUser');
-        logoutUser()
-        this.context.router.push('/');
+        localStorage.removeItem('currentUser');
+        this.context.router.push('/login');
     }
     
     render(){

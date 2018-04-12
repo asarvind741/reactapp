@@ -43,7 +43,9 @@ export class UsersForm extends React.Component {
             id:this.state.userslist.length + 1,
             firstname:"",
             lastname:"",
-            email:""
+            email:"",
+            role:"User",
+            company:''
         };
         console.log(row);
         this.state.userslist.push(row);
@@ -71,6 +73,8 @@ export class UsersForm extends React.Component {
                         <TableHeaderColumn>First Name</TableHeaderColumn>
                         <TableHeaderColumn>Last Name</TableHeaderColumn>
                         <TableHeaderColumn>E-Mail</TableHeaderColumn>
+                        <TableHeaderColumn>Role</TableHeaderColumn>
+                        <TableHeaderColumn>Company</TableHeaderColumn>
 
                     </TableRow>
                 </TableHeader>

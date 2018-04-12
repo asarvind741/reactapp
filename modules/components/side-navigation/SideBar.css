@@ -1,0 +1,51 @@
+.sidenav {
+    width: 200px;
+    background-color: #111;
+    height: 100vh;
+    display: inline-block;
+    vertical-align: top;
+}
+.right-sidebar {
+    display: inline-block;
+    width: calc(100% - 205px);
+    padding: 25px;
+    vertical-align: top;
+}
+.right-sidebar .App {
+    padding: 20px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+ul.answerOptions {
+    margin: 0;
+    list-style: none;
+    padding-left: 15px;
+}
+ul.answerOptions  li input{
+    margin-left: 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }

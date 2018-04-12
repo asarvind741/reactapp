@@ -1,8 +1,13 @@
-export function logoutUser(){
-  localStorage.removeItem('currentUser');
-}
+/* export function setAutherization(user){
+  console.log("user", user);
+  user =JSON.stringify(user);
+  localStorage.setItem('currentUser', user);
+  console.log("local------", localStorage.getItem('currentUser'));
+  return;
+} */
 
-export function setAuthorization(user) {
-  console.log("user in local storage----", localStorage.getItem('currentUser'));
- localStorage.setItem('currentUser', user);
+export function logoutUser(){
+  console.log("removed user from storage");
+  localStorage.removeItem('currentUser');
+  console.log("removed user from storage");
 }

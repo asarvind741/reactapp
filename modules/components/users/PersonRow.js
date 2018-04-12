@@ -14,7 +14,7 @@ class PersonRow extends React.Component {
             user: '',
             userslist:'',
             isEditing:false
-        }
+        };
         this.handleRemoveUser = this.handleRemoveUser.bind(this);
         this.handleEditUser = this.handleEditUser.bind(this);
         this.saveUser = this.saveUser.bind(this);
@@ -105,6 +105,14 @@ class PersonRow extends React.Component {
                 <TableRowColumn>
                     { isEditing ? ( <TextField name = "email" onChange = {this.updateUser} value = {row.email}/>):
                 ( row.email)
+                }</TableRowColumn>
+                <TableRowColumn>
+                    { isEditing ? ( <TextField name = "role" onChange = {this.updateUser} value = {row.role}/>):
+                ( row.role)
+                }</TableRowColumn>
+                <TableRowColumn>
+                    { isEditing ? ( <TextField name = "company" onChange = {this.updateUser} value = {row.company}/>):
+                ( row.company)
                 }</TableRowColumn>
                 <TableRowColumn>
                 { isEditing ? (

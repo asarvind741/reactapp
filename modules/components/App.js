@@ -11,8 +11,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import NavigationBar from './NavigationBar';
-import FlashMessagesList from './flash/FlashMessagesList';
 import Footer from './footer/Footer';
+import Sidebar from './side-navigation/SideBar'
 
 injectTapEventPlugin();
 
@@ -21,7 +21,7 @@ class App extends Component {
       return (
          <div className = "container">
              <NavigationBar />
-             <FlashMessagesList />
+             <Sidebar />
              { this.props.children }
              <div>
                <Footer />

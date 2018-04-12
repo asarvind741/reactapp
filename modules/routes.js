@@ -10,6 +10,7 @@ import Users from './components/users/Users';
 import Company from './components/company/Company';
 import Settings from './components/settings/Settings';
 import Logout from './components/logout/Logout';
+import Main from './components/quiz/Main'
 
 // import withStyles from './components/users/withStyles';
 
@@ -23,6 +24,7 @@ export default (
     <Route path = "company" component = {Company} />
     <Route path = 'settings' component = {Settings} />
     <Route path = 'logout' component = {Logout} />
+    <Route path = 'quiz' component = {Main} />
     {/* <Route path = "test" component = { withStyles} /> */}
   </Route>
 )
