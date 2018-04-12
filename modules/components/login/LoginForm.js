@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router';
 import { Card, CardTitle } from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 import './Login.css';
 
 class LoginForm extends React.Component {
@@ -33,12 +34,14 @@ class LoginForm extends React.Component {
         this.props.loginUserRequest(this.state)
             .then((response) => {
                 this.props.addUser(response.user);
-                localStorage.setItem('currentUser', response.user);
+                
                 if(response.status === 200){
                     this.props.addFlashMessage({
                         type: 'success',
                         text: response.statusText 
                     });
+                    // localStorage.setItem('currentUser', response.user);
+                    //this.props.setAuthorization((response.user.)
                     this.context.router.push('/');
                     
                 }

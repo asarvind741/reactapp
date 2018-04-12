@@ -76,6 +76,7 @@ a.navbar-dropdown {
 .dropdown-menu.show{
     background-color: black !important;
     padding: 10px;
+    position: relative;
 }
 
 .dropdown-list-options {

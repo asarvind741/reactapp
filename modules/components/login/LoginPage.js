@@ -11,19 +11,21 @@ import { connect } from 'react-redux';
 import { addFlashMessage } from '../actions/addFlashMessage';
 import { loginUserRequest } from '../../services/SignupService';
 import { addUser } from '../actions/UserActions';
+import { setAuthorization } from '../helpers/Auth';
 
 
 class LoginPage extends Component {
     render() {
         const users = this.props.users;
         console.log("users", users);
-        const { addFlashMessage, loginUserRequest, addUser} = this.props;
+        const { addFlashMessage, loginUserRequest, addUser, setAuthorization} = this.props;
         return(
                 <LoginForm 
                    addFlashMessage={addFlashMessage}
                    loginUserRequest={loginUserRequest}
                    users = {users}
                    addUser = { addUser}
+                   setAuthorization = { setAuthorization }
                     />
         );
     }
@@ -32,7 +34,8 @@ class LoginPage extends Component {
 LoginPage.propTypes = {
     loginUserRequest:React.PropTypes.func.isRequired,
     addFlashMessage: React.PropTypes.func.isRequired,
-    addUser:React.PropTypes.func.isRequired
+    addUser:React.PropTypes.func.isRequired,
+    setAuthorization:React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -42,4 +45,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {addFlashMessage, loginUserRequest, addUser})(LoginPage);
+export default connect(mapStateToProps, {addFlashMessage, loginUserRequest, addUser, setAuthorization})(LoginPage);
