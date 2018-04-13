@@ -2,11 +2,11 @@ import React from 'react';
 import update from 'react-addons-update';
 
 import Question from './Question';
-import quizQuestions from './quizQuestions';
+import QuizQuestions from './quizQuestions';
 import Quiz from './Quiz';
 import Result from './Result';
 
-class Main extends React.Component {
+class MainJavascript extends React.Component {
 
   constructor(props) {
     super(props);
@@ -17,11 +17,7 @@ class Main extends React.Component {
       question: '',
       answerOptions: [],
       answer: '',
-      answersCount: {
-        Nintendo: 0,
-        Microsoft: 0,
-        Sony: 0
-      },
+      correctAnswer: '',
       result: '',
       previousAnswer:''
     };
@@ -30,10 +26,10 @@ class Main extends React.Component {
   }
 
   componentWillMount() {
-    const shuffledAnswerOptions = quizQuestions.map((question) => this.shuffleArray(question.answers));
+    const shuffledAnswerOptions = QuizQuestions.map((question) => this.shuffleArray(question.answers));
     console.log('suffled answer options', shuffledAnswerOptions)
     this.setState({
-      question: quizQuestions[0].question,
+      question: QuizQuestions[0].question,
       answerOptions: shuffledAnswerOptions[0]
     });
   }
@@ -173,4 +169,4 @@ class Main extends React.Component {
 
 }
 
-export default Main;
+export default MainJavascript;

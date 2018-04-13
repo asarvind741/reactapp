@@ -5,10 +5,11 @@ class Sidebar extends React.Component {
     render(){
     return (
         <div className="sidenav">
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+            <a href="#">Brand Quiz</a>
+            <a href="javascript-quiz-1">JavaScript Quiz</a>
+            <a href="node-quiz-1">NodeJs Quiz</a>
+            <a href="angular-quiz-1">Angular Quiz</a>
+            <a href="react-quiz-1">React Quiz</a>
         </div>
     )
 }
