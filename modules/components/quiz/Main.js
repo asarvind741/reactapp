@@ -22,7 +22,8 @@ class Main extends React.Component {
         Microsoft: 0,
         Sony: 0
       },
-      result: ''
+      result: '',
+      previousAnswer:''
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -30,6 +31,7 @@ class Main extends React.Component {
 
   componentWillMount() {
     const shuffledAnswerOptions = quizQuestions.map((question) => this.shuffleArray(question.answers));
+    console.log('suffled answer options', shuffledAnswerOptions)
     this.setState({
       question: quizQuestions[0].question,
       answerOptions: shuffledAnswerOptions[0]
@@ -56,39 +58,68 @@ class Main extends React.Component {
   };
 
   handleAnswerSelected(event) {
-    this.setUserAnswer(event.currentTarget.value);
+    // console.log("event-----", event.target);
 
-    if (this.state.questionId < quizQuestions.length) {
+    if (event.currentTarget.value === "next") {
+      if (this.state.questionId < quizQuestions.length) {
         setTimeout(() => this.setNextQuestion(), 300);
-    } else {
+      }
+      else {
         setTimeout(() => this.setResults(this.getResults()), 300);
+      }
+    }
+    else if (event.currentTarget.value === 'previous') {
+      console.log("previous event", event.currentTarget.value);
+
+      if (this.state.questionId > 1 || this.state.question <= quizQuestions.length) {
+        console.log("previous event second");
+        setTimeout(() => this.setPreviousQuestion(), 300);
+      }
+    }
+
+    else {
+      this.setUserAnswer(event.currentTarget.value);
     }
   }
 
   setUserAnswer(answer) {
     const updatedAnswersCount = update(this.state.answersCount, {
-      [answer]: {$apply: (currentValue) => currentValue + 1}
+      [answer]: { $apply: (currentValue) => currentValue + 1 }
     });
 
     console.log("update answer count----", updatedAnswersCount);
 
     this.setState({
-        answersCount: updatedAnswersCount,
-        answer: answer
+      answersCount: updatedAnswersCount,
+      answer: answer
     });
   }
 
   setNextQuestion() {
     const counter = this.state.counter + 1;
     const questionId = this.state.questionId + 1;
+    this.state.previousAnswer = this.state.answer;
 
     this.setState({
-        counter: counter,
-        questionId: questionId,
-        question: quizQuestions[counter].question,
-        answerOptions: quizQuestions[counter].answers,
-        answer: ''
+      counter: counter,
+      questionId: questionId,
+      question: quizQuestions[counter].question,
+      answerOptions: quizQuestions[counter].answers,
+      answer: ''
     });
+  }
+
+  setPreviousQuestion() {
+    const counter = this.state.counter - 1;
+    const questionId = this.state.questionId - 1;
+
+    this.setState({
+      counter: counter,
+      questionId: questionId,
+      question: quizQuestions[counter].question,
+      answerOptions: quizQuestions[counter].answers,
+      answer:this.state.previousAnswer
+    })
   }
 
   getResults() {
@@ -131,7 +162,7 @@ class Main extends React.Component {
     return (
       <div className="App">
         <div className="App-header">
-          
+
           <h2>React Quiz</h2>
         </div>
         {this.state.result ? this.renderResult() : this.renderQuiz()}

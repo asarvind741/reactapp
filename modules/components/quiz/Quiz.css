@@ -1,0 +1,33 @@
+.question {
+    background-color: rgb(160, 51, 51);
+    margin-top: 15px;
+    color: white;
+    padding: 10px;
+}
+
+.question-counter {
+    color: blueviolet;
+    font-size: 20px;
+}
+
+ul.answerOptions {
+    margin: 0;
+    list-style: none;
+    padding-left: 15px;
+    color: blue;
+}
+ul.answerOptions  li input{
+    margin-left: 10px;
+    color: rgb(10, 87, 87) !important;
+}
+
+ul.answerOptions  li label{
+    color: rgb(10, 87, 87) !important;
+}
+
+.submit-button {
+    background-color: #4610db;
+    margin-left: 25px;
+    margin-top: 15px;
+    color: white;
+}

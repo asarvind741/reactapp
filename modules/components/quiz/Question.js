@@ -1,8 +1,9 @@
 import React from 'react';
+import './Quiz.css';
 
 function Question(props){
-    return (
-        <h4>{ props.content } </h4>
+    return(
+        <h6 className = "question">{props.content} </h6>
     )
 }
 

@@ -8,11 +8,10 @@ function AnswerOption(props){
          checked={props.answerType === props.answer}
          id={props.answerType}
          value={props.answerType}
-         disabled={props.answer}
          onChange={props.onAnswerSelected}
        />
 
-        <label className="radioCustomLabel" htmlFor={props.answerType}>
+        <label className="radioCustomLabel">
           {props.answerContent}
         </label>
     </li>

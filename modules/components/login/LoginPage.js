@@ -7,6 +7,8 @@ import { setAutherization } from '../helpers/Auth';
 // https://github.com/cornflourblue/react-redux-registration-login-example/blob/master/src/HomePage/HomePage.jsx
 // http://www.lorejs.org/quickstart/authentication/step-5/
 // https://github.com/bonham000/react-quiz-app/tree/master/src
+// https://medium.com/@rajaraodv/step-by-step-guide-to-building-react-redux-apps-using-mocks-48ca0f47f9a
+// https://www.codementor.io/mz026/getting-started-with-react-redux-an-intro-8r6kurcxf
 
 import LoginForm from './LoginForm';
 
