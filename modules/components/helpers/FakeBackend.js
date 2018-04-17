@@ -133,6 +133,14 @@ export function configureFakeBackend() {
 
                 }
 
+                if(url.endsWith('api/user/quiz/submit') && opts.method === 'POST'){
+                    console.log(opts.body);
+
+                    
+
+                }
+
+
             })
         });
     };

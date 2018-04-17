@@ -6,6 +6,7 @@ import quizQuestions from './quizQuestions';
 import Quiz from './Quiz';
 import Result from './Result';
 
+import { submitQuiz } from '../../services/QuizService'
 class Main extends React.Component {
 
   constructor(props) {
@@ -23,7 +24,8 @@ class Main extends React.Component {
         Sony: 0
       },
       result: '',
-      previousAnswer:''
+      previousAnswer:'',
+      quizData:[]
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -65,6 +67,9 @@ class Main extends React.Component {
         setTimeout(() => this.setNextQuestion(), 300);
       }
       else {
+        submitQuiz(this.state.quizData).then((res)=>{
+          console.log("check me");
+        });
         setTimeout(() => this.setResults(this.getResults()), 300);
       }
     }
@@ -93,9 +98,18 @@ class Main extends React.Component {
       answersCount: updatedAnswersCount,
       answer: answer
     });
+
+    
   }
 
   setNextQuestion() {
+    
+    this.state.quizData.push({
+      question:quizQuestions[this.state.counter].question,
+      selectedAnswer: this.state.answer
+    })
+    console.log("quiz data", this.state.quizData);
+
     const counter = this.state.counter + 1;
     const questionId = this.state.questionId + 1;
     this.state.previousAnswer = this.state.answer;
@@ -172,5 +186,6 @@ class Main extends React.Component {
   }
 
 }
+
 
 export default Main;

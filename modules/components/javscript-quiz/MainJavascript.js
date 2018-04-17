@@ -19,7 +19,10 @@ class MainJavascript extends React.Component {
       answer: '',
       correctAnswer: '',
       result: '',
-      previousAnswer:''
+      previousAnswer:'',
+      correctAnswerCount:0,
+      resultMessage:'',
+      alreadySelectedAnswer:''
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
@@ -30,8 +33,10 @@ class MainJavascript extends React.Component {
     console.log('suffled answer options', shuffledAnswerOptions)
     this.setState({
       question: QuizQuestions[0].question,
+      correctAnswer:QuizQuestions[0].correctAnswer,
       answerOptions: shuffledAnswerOptions[0]
     });
+    console.log("answer options----", this.state.answerOptions);
   }
 
   shuffleArray(array) {
@@ -54,10 +59,11 @@ class MainJavascript extends React.Component {
   };
 
   handleAnswerSelected(event) {
-    // console.log("event-----", event.target);
+    //console.log("event-----", event.target.value);
 
     if (event.currentTarget.value === "next") {
-      if (this.state.questionId < quizQuestions.length) {
+
+      if (this.state.questionId < QuizQuestions.length) {
         setTimeout(() => this.setNextQuestion(), 300);
       }
       else {
@@ -67,7 +73,7 @@ class MainJavascript extends React.Component {
     else if (event.currentTarget.value === 'previous') {
      // console.log("previous event", event.currentTarget.value);
 
-      if (this.state.questionId > 1 || this.state.question <= quizQuestions.length) {
+      if (this.state.questionId > 1 || this.state.question <= QuizQuestions.length) {
         //console.log("previous event second");
         setTimeout(() => this.setPreviousQuestion(), 300);
       }
@@ -79,17 +85,19 @@ class MainJavascript extends React.Component {
   }
 
   setUserAnswer(answer) {
-    const updatedAnswersCount = update(this.state.answersCount, {
-      [answer]: { $apply: (currentValue) => currentValue + 1 }
-    });
-
-    console.log("update answer count----", updatedAnswersCount);
-
+    const correctAnswer = this.state.correctAnswer;
+    const alreadySelectedAnswer = this.state.alreadySelectedAnswer;
+    console.log("answer selected by user----", answer);
+    if(correctAnswer === answer && correctAnswer!= alreadySelectedAnswer){
     this.setState({
-      answersCount: updatedAnswersCount,
+      correctAnswerCount: this.state.correctAnswerCount + 1,
+      alreadySelectedAnswer:this.state.answer,
       answer: answer
     });
+
+    console.log("correct answer count is-", this.state.correctAnswerCount);
   }
+}
 
   setNextQuestion() {
     const counter = this.state.counter + 1;
@@ -99,41 +107,49 @@ class MainJavascript extends React.Component {
     this.setState({
       counter: counter,
       questionId: questionId,
-      question: quizQuestions[counter].question,
-      answerOptions: quizQuestions[counter].answers,
+      question: QuizQuestions[counter].question,
+      answerOptions: QuizQuestions[counter].answers,
+      correctAnswer:QuizQuestions[counter].correctAnswer,
       answer: ''
     });
   }
 
   setPreviousQuestion() {
+    console.log('inside previous function');
     const counter = this.state.counter - 1;
     const questionId = this.state.questionId - 1;
+    console.log("previous answer------", this.state.previousAnswer);
 
     this.setState({
       counter: counter,
       questionId: questionId,
-      question: quizQuestions[counter].question,
-      answerOptions: quizQuestions[counter].answers,
+      question: QuizQuestions[counter].question,
+      answerOptions: QuizQuestions[counter].answers,
       answer:this.state.previousAnswer
     })
   }
 
   getResults() {
-    const answersCount = this.state.answersCount;
-    const answersCountKeys = Object.keys(answersCount);
-    const answersCountValues = answersCountKeys.map((key) => answersCount[key]);
-    const maxAnswerCount = Math.max.apply(null, answersCountValues);
-
-    return answersCountKeys.filter((key) => answersCount[key] === maxAnswerCount);
+    const answersCount = this.state.correctAnswerCount;
+    var reusltCalculate = answersCount* 100/(QuizQuestions.length);
+    console.log("calculate result", reusltCalculate);
+    reusltCalculate = reusltCalculate.toFixed(2);
+    return reusltCalculate;
   }
 
-  setResults(result) {
-    console.log("result", result);
-    if (result.length === 1) {
-      this.setState({ result: result[0] });
-    } else {
-      this.setState({ result: 'Undetermined' });
+  setResults(reusltCalculate) {
+    console.log("result", reusltCalculate);
+    var message;
+    if(reusltCalculate>=70){
+      message = "You have passed quiz successfully."
     }
+    else if(reusltCalculate<70){
+      message = "Ops! You got failed. Please give another try.."
+    }
+    this.setState({
+      result:reusltCalculate,
+      resultMessage: message
+    })
   }
 
   renderQuiz() {
@@ -143,15 +159,17 @@ class MainJavascript extends React.Component {
         answerOptions={this.state.answerOptions}
         questionId={this.state.questionId}
         question={this.state.question}
-        questionTotal={quizQuestions.length}
+        questionTotal={QuizQuestions.length}
         onAnswerSelected={this.handleAnswerSelected}
+        
       />
     );
   }
 
   renderResult() {
     return (
-      <Result quizResult={this.state.result} />
+      <Result quizResult={this.state.result}
+             resultMessage = { this.state.resultMessage} />
     );
   }
 

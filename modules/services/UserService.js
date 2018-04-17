@@ -1,4 +1,3 @@
-import {ADD_USER } from '../components/actions/UserActions';
 
 export function deleteUser(userData) {
     console.log("user", userData);

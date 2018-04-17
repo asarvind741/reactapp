@@ -7,10 +7,8 @@ function Quiz(props) {
   function renderAnswerOptions(key) {
     return (
       <AnswerOption
-        key={key.content}
-        answerContent={key.content}
-        answerType={key.type}
-        answer={props.answer}
+        key={key}
+        answer={key}
         questionId={props.questionId}
         onAnswerSelected={props.onAnswerSelected}
       />

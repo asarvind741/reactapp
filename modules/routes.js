@@ -11,6 +11,7 @@ import Company from './components/company/Company';
 import Settings from './components/settings/Settings';
 import Logout from './components/logout/Logout';
 import Main from './components/quiz/Main'
+import MainJavascript from './components/javscript-quiz/MainJavascript';
 
 // import withStyles from './components/users/withStyles';
 
@@ -25,6 +26,7 @@ export default (
     <Route path = 'settings' component = {Settings} />
     <Route path = 'logout' component = {Logout} />
     <Route path = 'quiz' component = {Main} />
+    <Route path = 'javascript-quiz' component = { MainJavascript } />
     {/* <Route path = "test" component = { withStyles} /> */}
   </Route>
 )
