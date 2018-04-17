@@ -40,7 +40,6 @@ LoginPage.propTypes = {
     loginUserRequest:React.PropTypes.func.isRequired,
     addFlashMessage: React.PropTypes.func.isRequired,
     addUser:React.PropTypes.func.isRequired,
-    setAutherization:React.PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

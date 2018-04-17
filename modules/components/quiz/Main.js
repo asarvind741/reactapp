@@ -33,7 +33,6 @@ class Main extends React.Component {
 
   componentWillMount() {
     const shuffledAnswerOptions = quizQuestions.map((question) => this.shuffleArray(question.answers));
-    console.log('suffled answer options', shuffledAnswerOptions)
     this.setState({
       question: quizQuestions[0].question,
       answerOptions: shuffledAnswerOptions[0]
@@ -67,9 +66,9 @@ class Main extends React.Component {
         setTimeout(() => this.setNextQuestion(), 300);
       }
       else {
-        submitQuiz(this.state.quizData).then((res)=>{
-          console.log("check me");
-        });
+       // submitQuiz(this.state.quizData).then((res)=>{
+        //  console.log("check me");
+        //});
         setTimeout(() => this.setResults(this.getResults()), 300);
       }
     }

@@ -30,7 +30,6 @@ class MainJavascript extends React.Component {
 
   componentWillMount() {
     const shuffledAnswerOptions = QuizQuestions.map((question) => this.shuffleArray(question.answers));
-    console.log('suffled answer options', shuffledAnswerOptions)
     this.setState({
       question: QuizQuestions[0].question,
       correctAnswer:QuizQuestions[0].correctAnswer,
