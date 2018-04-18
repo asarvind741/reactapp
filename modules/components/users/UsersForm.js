@@ -227,11 +227,11 @@ export class UsersForm extends React.Component {
         }
     }
     render() {
-        console.log("state row", this.state.userslist);
+        // console.log("state row", this.state.userslist);
         const testUser = JSON.parse(localStorage.getItem('currentUser'));
-        console.log("test user", testUser);
+        // console.log("test user", testUser);
         const user = this.state.userslist.filter((oneUser) => oneUser.email === testUser.email);
-        console.log('user is', user);
+        // console.log('user is', user);
         let rows = this.state.userslist.map(person => {
             return (
                 <PersonRow key={person.id} data={person} 
