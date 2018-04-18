@@ -1,4 +1,5 @@
 import sha256 from 'sha256';
+import findIndex from 'lodash/findIndex';
 
 let users = JSON.parse(localStorage.getItem('users')) || [];
 export function configureFakeBackend() {
@@ -69,15 +70,16 @@ export function configureFakeBackend() {
 
                 if (url.endsWith('api/user/update') && opts.method === 'POST') {
                     let params = JSON.parse(opts.body);
-
+                    let index =  findIndex(users, { id: params.id });
                     let filteredUsers = users.filter(user => {
                         return user.email === params.email;
                     });
 
                     if (filteredUsers.length > 0) {
                         let user = filteredUsers[0];
-                        console.log("users are---", users);
+                        console.log("user are---", user);
                         user.password = params.password;
+                        users.splice(index, 1, user);
                         resolve({
                             status: 200,
                             statusText: 'Your Password has been changed.'

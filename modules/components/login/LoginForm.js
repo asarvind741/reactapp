@@ -33,13 +33,13 @@ class LoginForm extends React.Component {
         this.state.isLoggedIn = true;
         this.props.loginUserRequest(this.state)
             .then((response) => {
-                this.props.addUser(response.user);
                 if(response.status === 200){
                     
                     this.props.addFlashMessage({
                         type: 'success',
                         text: response.statusText 
                     });
+                    this.props.addUser(response.user);
                     const user = JSON.stringify(response.user);
                    localStorage.setItem('currentUser', user);
                     this.context.router.push('/');
@@ -53,7 +53,7 @@ class LoginForm extends React.Component {
                     this.state.isLoggedIn = false;
                     this.context.router.push('/login');
                 }
-                this.props.addUser(response.user);
+                
 
             });
 
