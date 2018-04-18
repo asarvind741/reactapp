@@ -17,7 +17,7 @@ class NavigationBar extends Component {
                         <ul className="nav navbar-nav">
                             <li className="dropdown">
                                 <Link to="#" className="dropdown-toggle navbar-dropdown" data-toggle="dropdown" role="button"  aria-expanded="false">DashBoard <span className="caret"></span></Link>
-                                <ul className="dropdown-menu">
+                                <ul className="dropdown-menu posAbs">
                                     <li><a className = "dropdown-list-options" href="/users">All Users</a></li>
                                     <li><a className = "dropdown-list-options" href="/company">Company Configuration</a></li>
                                     <li><a className = "dropdown-list-options" href="#">Device Configuration</a></li>

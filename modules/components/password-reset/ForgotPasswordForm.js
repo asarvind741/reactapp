@@ -1,4 +1,5 @@
 import React from 'react';
+import './ForgotPassword.css';
 
 export class ForgotPasswordForm extends React.Component {
     constructor(props) {
@@ -46,7 +47,7 @@ export class ForgotPasswordForm extends React.Component {
     render() {
         return (
             <div>
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit} className = "password-reset ">
                 <h1 className = "login-class">Please Reset Your Password Here...</h1>
                 <div className="form-group">
                     <label className="control-label">
@@ -93,7 +94,7 @@ export class ForgotPasswordForm extends React.Component {
                     </button>
                 </div>
             </form>
-            <p>Don't have an account? <a href="/signup">Sign Up</a>.</p>
+            <p className = "password-reset">Don't have an account? <a href="/signup">Sign Up</a>.</p>
             </div>
         );
     }

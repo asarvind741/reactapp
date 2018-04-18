@@ -79,7 +79,9 @@ a.navbar-dropdown {
     padding: 10px;
     position: relative;
 }
-
+.posAbs {
+    position: absolute !important;
+}
 .dropdown-list-options {
     color: white;
 }
