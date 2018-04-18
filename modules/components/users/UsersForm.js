@@ -127,12 +127,14 @@ UsersForm.contextTypes = {
 export default connect(null, { deleteUser, addFlashMessage,updateUserNow})(UsersForm); */
 
 import React from 'react';
-import { deleteUser,updateUserNow } from '../../services/UserService';
+import { deleteUser, updateUserNow } from '../../services/UserService';
 import PersonRow from './PersonRow';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { addFlashMessage } from '../actions/addFlashMessage';
-import { Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn, TablePagination,
-        TableSortLabel} from "material-ui/Table";
+import {
+    Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, TablePagination,
+    TableSortLabel
+} from "material-ui/Table";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { withStyles } from 'material-ui/styles';
 import Toolbar from 'material-ui/Toolbar';
@@ -147,7 +149,7 @@ export class UsersForm extends React.Component {
         super(props);
         this.state = {
             userslist: [],
-            userlistFromChild:[]
+            userlistFromChild: []
 
         };
         this.myCallback = this.myCallback.bind(this);
@@ -163,67 +165,66 @@ export class UsersForm extends React.Component {
             }
         });
     }
-    myCallback (dataFromChild) {
+    myCallback(dataFromChild) {
         this.setState({ userslist: dataFromChild });
     }
-    addUser(event){
+    addUser(event) {
         console.log("check row method");
-        
+
         var row = {
-            id:this.state.userslist.length + 1,
-            firstname:"",
-            lastname:"",
-            email:"",
-            role:"User",
-            company:''
+            id: this.state.userslist.length + 1,
+            firstname: "",
+            lastname: "",
+            email: "",
+            role: "User",
+            company: ''
         };
         console.log(row);
         this.state.userslist.push(row);
         this.setState({})
         console.log(this.state.userslist);
-      
+
     }
-   
+
     sortTable(event) {
         console.log(event.currentTarget.getAttribute('data-field'));
         console.log(this.currentFilter[event.currentTarget.getAttribute('data-field')]);
-        if(typeof this.currentFilter[event.currentTarget.getAttribute('data-field')] != 'undefined') {
+        if (typeof this.currentFilter[event.currentTarget.getAttribute('data-field')] != 'undefined') {
             ++this.currentFilter[event.currentTarget.getAttribute('data-field')];
             console.log(this.currentFilter);
         }
-        else 
-        this.currentFilter[event.currentTarget.getAttribute('data-field')] = 0;
+        else
+            this.currentFilter[event.currentTarget.getAttribute('data-field')] = 0;
         let newarr = this.state.userslist.sort(this.getCompareFunc(event.currentTarget.getAttribute('data-field')))
-        this.setState({userslist:newarr})
+        this.setState({ userslist: newarr })
     }
 
     getCompareFunc(field) {
-        return (a,b) => {
+        return (a, b) => {
             var nameA = a[field].toUpperCase(); // ignore upper and lowercase
             var nameB = b[field].toUpperCase(); // ignore upper and lowercase
-            if(this.currentFilter[field]%2 == 0) {
-            if (nameA < nameB) {
-              return -1;
+            if (this.currentFilter[field] % 2 == 0) {
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+
+                // names must be equal
+                return 0;
             }
-            if (nameA > nameB) {
-              return 1;
+            else {
+                if (nameA < nameB) {
+                    return 1;
+                }
+                if (nameA > nameB) {
+                    return -1;
+                }
+
+                // names must be equal
+                return 0;
             }
-          
-            // names must be equal
-            return 0;
-        }
-        else
-        {
-            if (nameA < nameB) {
-                return 1;
-              }
-              if (nameA > nameB) {
-                return -1;
-              }
-            
-              // names must be equal
-              return 0;
-        }
         }
     }
     render() {
@@ -231,37 +232,40 @@ export class UsersForm extends React.Component {
         const testUser = JSON.parse(localStorage.getItem('currentUser'));
         // console.log("test user", testUser);
         const user = this.state.userslist.filter((oneUser) => oneUser.email === testUser.email);
-        // console.log('user is', user);
+        console.log('user is--', user);
         let rows = this.state.userslist.map(person => {
             return (
-                <PersonRow key={person.id} data={person} 
-                deleteUser = {this.props.deleteUser}
-                updateUserNow = {this.props.updateUserNow}
-                addFlashMessage = {this.props.addFlashMessage}
-                myCallback = {this.myCallback}
-                user = { user } />
+                <PersonRow key={person.id} data={person}
+                    deleteUser={this.props.deleteUser}
+                    updateUserNow={this.props.updateUserNow}
+                    addFlashMessage={this.props.addFlashMessage}
+                    myCallback={this.myCallback}
+                    user={user} />
             );
         })
         return (
             <div>
-            <button className = "btn btn-primary" onClick ={this.addUser}>Add New User</button>
-            <MuiThemeProvider>
-            <Table>
-                <TableHeader>
-                    <TableRow onCellClick={((e) => this.sortTable(e))}>
-                        <TableHeaderColumn data-field="firstname">First Name</TableHeaderColumn>
-                        <TableHeaderColumn data-field="lastname">Last Name</TableHeaderColumn>
-                        <TableHeaderColumn data-field="email">E-Mail</TableHeaderColumn>
-                        <TableHeaderColumn data-field="role">Role</TableHeaderColumn>
-                        <TableHeaderColumn data-field="company">Company</TableHeaderColumn>
+                {/* {(user.role == 'admin') ? */}
+                    <button className="btn btn-primary" onClick={this.addUser}>Add New User</button>
+                    {/* : ''
+                } */}
+                <MuiThemeProvider>
+                    <Table>
+                        <TableHeader>
+                            <TableRow onCellClick={((e) => this.sortTable(e))}>
+                                <TableHeaderColumn data-field="firstname">First Name</TableHeaderColumn>
+                                <TableHeaderColumn data-field="lastname">Last Name</TableHeaderColumn>
+                                <TableHeaderColumn data-field="email">E-Mail</TableHeaderColumn>
+                                <TableHeaderColumn data-field="role">Role</TableHeaderColumn>
+                                <TableHeaderColumn data-field="company">Company</TableHeaderColumn>
 
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {rows}
-                </TableBody>
-            </Table>
-            </MuiThemeProvider>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {rows}
+                        </TableBody>
+                    </Table>
+                </MuiThemeProvider>
             </div>
         );
     }
@@ -271,17 +275,17 @@ export class UsersForm extends React.Component {
 
     return (
         <tr>
-            <td>
-                {props.data.firstname}
-            </td>
-            <td>
-                {props.data.lastname}
-            </td>
-            <td>
-                {props.data.email}
-            </td>
-            <td>
-            <input type="button" className="btn btn-primary" value="Edit" /* onClick={this.handleRemoveUser} />
+                    <td>
+                        {props.data.firstname}
+                    </td>
+                    <td>
+                        {props.data.lastname}
+                    </td>
+                    <td>
+                        {props.data.email}
+                    </td>
+                    <td>
+                        <input type="button" className="btn btn-primary" value="Edit" /* onClick={this.handleRemoveUser} />
             </td>
             <td>
                 <input type="button" className="btn btn-danger" value="Remove" /* onClick={this.handleRemoveUser}  />
@@ -294,9 +298,8 @@ export class UsersForm extends React.Component {
 
 UsersForm.propTypes = {
     getUsersList: React.PropTypes.func.isRequired,
-    deleteUser:React.PropTypes.func.isRequired,
-    addFlashMessage: React.PropTypes.func.isRequired,
-    user: React.PropTypes.object.isRequired
+    deleteUser: React.PropTypes.func.isRequired,
+    addFlashMessage: React.PropTypes.func.isRequired
 };
 
 UsersForm.contextTypes = {
@@ -304,4 +307,4 @@ UsersForm.contextTypes = {
 }
 
 
-export default connect(null, { deleteUser, addFlashMessage,updateUserNow})(UsersForm);
+export default connect(null, { deleteUser, addFlashMessage, updateUserNow })(UsersForm);

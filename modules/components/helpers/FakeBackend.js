@@ -45,7 +45,7 @@ export function configureFakeBackend() {
                     let params = JSON.parse(opts.body);
 
                     let filteredUsers = users.filter(user => {
-                        return user.email === params.email && user.password === sha256(params.password);
+                        return user.email === params.email && user.password === params.password;
                     });
                     if (filteredUsers.length > 0) {
                         
