@@ -1,4 +1,4 @@
-import { ADD_USER, EDIT_USER } from '../actions/types';
+import { ADD_USER, EDIT_USER, DELETE_USER } from '../actions/types';
 
 export default (state = [], action ={}) => {
     switch (action.type) {
@@ -8,15 +8,10 @@ export default (state = [], action ={}) => {
                 action.user
             ];
 
-        case EDIT_USER:
-            const filteredUsers = state.filter(user => user.email === action.payload.user.email);
-            const isUserExist = filteredUsers.length > 0;
-            if (isUserExist) {
-                const updatedUser = {
+        case DELETE_USER:
+        const removeUser = JSON.parse(action.user);
+        return  state.filter(user => user.email != removeUser.email);;
 
-                };
-            }
-            return state;
         default:
             return state;
     }

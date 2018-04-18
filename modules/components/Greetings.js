@@ -3,9 +3,11 @@ import { Component } from 'react';
 import { Card, CardTitle,  CardText } from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Main from './quiz/Main';
+import LoginPage from './login/LoginPage';
 
 class Greetings extends Component {
-    render(){
+    
+    renderDefaultQuiz(){
     return (
         <div>
         <MuiThemeProvider>
@@ -24,6 +26,22 @@ class Greetings extends Component {
          </div>
     );
 }
+
+renderNotLoggedIn(){
+    return (
+        <LoginPage />
+    )
+}
+
+render() {
+    const isLogged = localStorage.getItem('currentUser');
+    return (
+      <div className="App">
+        {isLogged ? this.renderDefaultQuiz() : this.renderNotLoggedIn()}
+      </div>
+    );
+  }
+
 }
 
 export default Greetings;

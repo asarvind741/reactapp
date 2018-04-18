@@ -5,7 +5,6 @@ function AnswereOption(props) {
         <li>
             <input type="radio"
                 name="radioGroup"
-                checked={props.answerType === props.answer}
                 value={props.answer}
                 onChange={props.onAnswerSelected}
             />
@@ -19,7 +18,6 @@ function AnswereOption(props) {
 }
 
 AnswereOption.propTypes = {
-    answerType: React.PropTypes.string.isRequired,
     answer: React.PropTypes.string.isRequired,
     onAnswerSelected: React.PropTypes.func.isRequired
 
