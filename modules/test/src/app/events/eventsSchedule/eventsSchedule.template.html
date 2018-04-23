@@ -1,0 +1,71 @@
+<div class="eventBody animated fadeInRight">
+    <div class="text-center sheduleTopBar">
+        <div class="col-sm-12">
+            <h2 class="historyTitle">{{eventsScheduleCtrl.name}}</h2>
+        </div>
+        <div class="datepicker pull-right">
+            <div class="btn-group" ng-disabled="eventsScheduleCtrl.showSpinner" uib-dropdown on-toggle="toggledDropdown(open)" keyboard-nav>
+                <button type="button" class="btn btn-default" ng-disabled="eventsScheduleCtrl.showSpinner" uib-dropdown-toggle>
+                    Change period <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                    <li role="menuitem">
+                        <a ng-click="eventsScheduleCtrl.changePeriod(0)">Month</a>
+                    </li>
+                    <li role="menuitem">
+                        <a ng-click="eventsScheduleCtrl.changePeriod(1)">Day</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="input-group pull-right  col-sm-4 col-xs-10 col-xs-offset-1 text-right datepicker">
+            <button type="button" class="btn btn-default full-width" ng-click="eventsScheduleCtrl.open()">
+                        {{eventsScheduleCtrl.date | date : eventsScheduleCtrl.dateOptions.format }}
+                 </button>
+            <input type="hidden" ng-disabled="eventsScheduleCtrl.showSpinner" class="form-control" uib-datepicker-popup="{{eventsScheduleCtrl.dateOptions.format}}" ng-model="eventsScheduleCtrl.date" is-open="eventsScheduleCtrl.popup.opened" datepicker-options="eventsScheduleCtrl.dateOptions"
+                show-button-bar=" false " ng-click="eventsScheduleCtrl.open()" min="eventsScheduleCtrl.minTime" close-on-date-selection="true" showWeeks="false" on-open-focus="false " />
+            <span class="input-group-addon ">
+                <i class="fa fa-calendar " ng-disabled="eventsScheduleCtrl.showSpinner" ng-click="eventsScheduleCtrl.open() "></i>
+            </span>
+        </div>
+    </div>
+    <div class="m-t-xll" ng-if="eventsScheduleCtrl.showSpinner">
+        <spinner-directive color="sk-spinner-events"></spinner-directive>
+    </div>
+    <div class="col-md-12" ng-if="!eventsScheduleCtrl.showSpinner">
+        <div ng-if=" eventsScheduleCtrl.eventsArr.length == 0" class="text-center nameDestination">
+            There are no items
+        </div>
+        <table ng-if="eventsScheduleCtrl.eventsArr.length > 0" class="table table-hover m-t-sm table-responsive ">
+            <thead>
+                <tr>
+                    <th ng-click="eventsScheduleCtrl.sortBy( 'creationDate') ">
+                        Date</th>
+                    <th ng-click="eventsScheduleCtrl.sortBy( 'timeOfEvent') ">
+                        Time</th>
+                    <th ng-click="eventsScheduleCtrl.sortBy( 'name') ">
+                        Event</th>
+                    <th ng-click="eventsScheduleCtrl.sortBy( 'status') ">
+                        Status</th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="event in eventsScheduleCtrl.eventsArr | orderBy: eventsScheduleCtrl.sortField " class="pointer ">
+                    <td ui-sref="index.events.item({ itemID: event.id }) ">{{event.creationDate | date : 'dd-MM-yyyy'}}</td>
+                    <td ui-sref="index.events.item({ itemID: event.id }) ">{{event.timeOfEvent}}</td>
+                    <td ui-sref="index.events.item({ itemID: event.id }) ">{{event.name}}</td>
+                    <td ui-sref="index.events.item({ itemID: event.id }) ">{{event | status}}</td>
+                    <td>
+                        <button ng-if="eventsScheduleCtrl.showControls" type="button" class="btn btn-events btn-sm" ng-click="eventsScheduleCtrl.delete(event)" ng-model="event.loading" ng-disabled="event.loading"> 
+                    <i class="fa fa-trash-o "></i>
+                    </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

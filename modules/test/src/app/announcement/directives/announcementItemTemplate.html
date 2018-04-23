@@ -1,0 +1,91 @@
+<div class="announcementItem animated fadeInRight">
+    <div class="announcementHeader">
+        <h3>Send Community Announcement </h3>
+        <button type="button" ng-if="announcementItemCtrl.showEditButtons" ng-disabled="announcementItemCtrl.loading" class="btn btn-onSmall btn-default btn-sm pull-right" ng-click="announcementItemCtrl.delete()">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>
+        <button type="button" ng-if="announcementItemCtrl.showEditButtons" ng-disabled="announcementItemCtrl.loading" class="btn  btn-onSmall btn-default btn-sm pull-right" ng-click="announcementItemCtrl.update()">
+                    <span class="glyphicon glyphicon-retweet" aria-hidden="true"></span>
+            </button>
+    </div>
+    <div class="announcementElement">
+        <label class="announcementTitle">Title</label>
+        <input type="text" class="input-group form-control" ng-class="announcementItemCtrl.errName" maxlength="140" ng-model="announcementItemCtrl.item.title">
+    </div>
+    <div class="announcementElement">
+        <label class="announcementTitle">Short Description
+                <small>(300 Characters)</small>
+            </label>
+        <input type="text" max="300" class="input-group form-control" maxlength="300" ng-model="announcementItemCtrl.item.shortDescription">
+    </div>
+    <div class="announcementElement">
+        <label class="announcementTitle">Description </label>
+        <textarea ui-tinymce="announcementItemCtrl.tinymceOptions" ng-model="announcementItemCtrl.item.description"></textarea>
+    </div>
+    <div class="announcementElement date">
+        <div class="input-group datepickerItem">
+            <span class="input-group-addon" ng-click="announcementItemCtrl.open()">
+                    <label class="announcementTitle date">Date </label>
+                </span>
+            <button type="button" class="btn btn-default full-width" ng-click="announcementItemCtrl.open()">
+                       {{announcementItemCtrl.date | date : 'dd MMMM yyyy' }}
+                </button>
+            <input type="hidden" class="form-control text-right" uib-datepicker-popup="dd MMMM yyyy" ng-model="announcementItemCtrl.date" is-open="announcementItemCtrl.popup.opened" datepicker-options="announcementItemCtrl.dateOptions" show-button-bar="false" ng-click="announcementItemCtrl.open()"
+            />
+            <span class="input-group-addon" ng-click="announcementItemCtrl.open()">
+                    <i class="fa fa-calendar"></i>
+                </span>
+        </div>
+    </div>
+    <div class="announcementElement">
+        <label class="announcementTitle">Send to</label>
+        <div ng-repeat="announcementGroup in announcementItemCtrl.announcementGroups " class="announcementItemRadio">
+            <div class="radio">
+                <input type="radio" name="gender" id="{{announcementGroup.id}}" ng-model="announcementItemCtrl.item.announcementGroup" value="{{announcementGroup.id}}">
+                <label for="{{announcementGroup.id}}">
+                            {{announcementGroup.name}}
+                    </label>
+            </div>
+        </div>
+        <label class="emergency">
+                <input type="checkbox" ng-model="announcementItemCtrl.item.isEmergency" [name="string" ] [ng-true-value="true" ] [ng-false-value="false"
+                    ] [ng-change="string" ]> Emergency announcement</label>
+
+    </div>
+
+    <div class="announcementElement ">
+        <label class="announcementTitle">File Upload</label>
+        <div class="row">
+            <div>
+                <input type="file" id="fileInputId" class="inputfile inputfile-2" />
+                <label for="fileInputId" class="btn btn-default">
+                            <span>Upload File...</span>
+                        </label>
+            </div>
+            <div class="cropArea col-xs-12 col-md-6" ng-if="announcementItemCtrl.myImage">
+                <ui-cropper result-image-format="jpg" on-load-done="announcementItemCtrl.loadImage" result-image-quality="100" image="announcementItemCtrl.myImage" area-type="rectangle" aspect-ratio="0.8" result-blob="announcementItemCtrl.myCroppedImageBlob" result-image="announcementItemCtrl.myCroppedImage"
+                    result-image-size="'max'" init-max-area="true"></ui-cropper>
+            </div>
+            <div class=" col-xs-12 col-md-6" ng-if="announcementItemCtrl.myImage">
+                <div class="previewTitle">Preview:</div>
+                <div><img ng-src="{{announcementItemCtrl.myCroppedImage}}" style="height:150px" /></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="announcement-footer" ng-if="!announcementItemCtrl.showSpinner">
+    <button type="button" class="btn btn-announcement" ng-disabled="announcementItemCtrl.loading" ng-click="announcementItemCtrl.send()">
+            Send an Announcement
+        </button>
+    <button type="button" class="btn btn-default" ng-disabled="announcementItemCtrl.loading" ng-click="announcementItemCtrl.save()">
+            Save as Draft
+        </button>
+    <button type="button" ng-if="announcementItemCtrl.showEditButtons" ng-disabled="announcementItemCtrl.loading" class="btn  btn-onLarge btn-default " ng-click="announcementItemCtrl.delete()">
+            Delete
+        </button>
+    <button type="button" ng-if="announcementItemCtrl.showEditButtons" ng-disabled="announcementItemCtrl.loading" class="btn btn-onLarge btn-default" ng-click="announcementItemCtrl.update()">
+            Update
+        </button>
+</div>

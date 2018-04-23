@@ -1,0 +1,79 @@
+<div class="text-center nameDestination">
+    <strong>Drivers</strong>
+</div>
+<div class="col-md-10 col-md-offset-1">
+    <table class="table table-hover ">
+        <thead>
+            <th>
+                <button type="button" ng-if="driversCtrl.showControls" class="btn shuttle-btn" ng-click="driversCtrl.newDriver = !driversCtrl.newDriver">
+                    New Driver
+                </button>
+                <div class="col-lg-4 col-sm-6 col-xs-5 pull-right">
+                    <input class="form-control col-xs-12" placeholder="Search..." ng-model="driversCtrl.search"></input>
+                </div>
+            </th>
+
+        </thead>
+        <tbody>
+            <tr ng-if="driversCtrl.driversArr.length  == 0">
+                <td>
+                    <p class="text-center">
+                        <span ng-if="!driversCtrl.showSpinner">There are no items</span>
+                    </p>
+                </td>
+            </tr>
+            <tr ng-if="driversCtrl.driversArr.length  > 0" ng-repeat="item in driversCtrl.driversArr | filter:driversCtrl.search  ">
+                <td>
+                    <form editable-form name="editableForm" onaftersave="driversCtrl.save(item)" class="editable-form">
+                        <div class="col-xs-8">
+                            <span editable-text="item.name" onbeforesave="driversCtrl.checkName(item.id, $data)" e-name="name" class="col-md-4 col-sm-4 col-xs-12" e-required> {{ item.name || 'empty' }} </span>
+                            <span editable-text="item.phone" class="m-l-sm" e-name="phone" onbeforesave="driversCtrl.checkPhone($data)">
+                                <i class="fa fa-mobile" aria-hidden="true"></i> {{ item.phone || 'empty' }} </span>
+
+
+                        </div>
+                        <div class="buttons text-right" ng-if="driversCtrl.showControls">
+                            <button type="button" class="btn shuttle-btn btn-sm" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn- btn-primary btn-sm" ng-click="driversCtrl.delete(item)" ng-show="!editableForm.$visible">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                            <span ng-show="editableForm.$visible">
+                                <button type="submit" class="btn shuttle-btn btn-sm" ng-disabled="editableForm.$waiting">
+                                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-sm" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                    <i class="fa fa-ban" aria-hidden="true"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            <tr ng-if="driversCtrl.newDriver">
+                <td>
+                    <div class="col-md-offset-1 col-md-10 destination-list-item " ng-if="driversCtrl.newDriver">
+                        <div class="col-xs-9 text-right destination-list-item-text">
+                            <span class="editable-wrap editable-text ng-scope">
+                                <div class="editable-controls  form-group">
+                                    <input type="text" ng-model="driversCtrl.newDriverObj.name" placeholder="Name" class="editable-input form-control">
+                                </div>
+                            </span>
+                            <span class="editable-wrap editable-text ng-scope">
+                                <div class="editable-controls  form-group">
+                                    <input type="text" ng-model="driversCtrl.newDriverObj.phone" placeholder="Phone number" class="editable-input form-control">
+                                </div>
+                            </span>
+                        </div>
+                        <div class="buttons">
+                            <button type="button" class="btn shuttle-btn" ng-disabled="driversCtrl.newDriverObj.loading" ng-click="driversCtrl.add(driversCtrl.newDriverObj)">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

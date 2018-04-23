@@ -1,0 +1,8 @@
+<div ng-if="eventHistoryItemCtrl.showSpinner" class="p-t-xl">
+    <spinner-directive color="sk-spinner-events"></spinner-directive>
+</div>
+<div ng-if="!eventHistoryItemCtrl.showSpinner">
+    <div class="animated fadeInRight">
+        <event-history-item></event-history-item>
+    </div>
+</div>

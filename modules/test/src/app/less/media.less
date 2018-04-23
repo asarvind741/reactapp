@@ -1,0 +1,535 @@
+    @media(max-width:831px) and (min-width:770px) {
+        // .fixed-nav.fixed-sidebar .wrapper-content{
+        //     display: none;
+        // }
+        .fixed-nav.fixed-sidebar.mini-navbar .wrapper-content {
+            display: block;
+        }
+    }
+
+    @media(min-width: 769px) {
+        .announcement-menu {
+            display: none;
+            font-size: 23px;
+            color: #ffffff;
+        }
+        .carsTables {
+            width: 50% !important;
+        } // .announcement-footer {
+        //     // position: absolute;
+        //     // bottom: 0;
+        //     // margin-left: -30px;
+        // }
+        .historyNav {
+            float: none;
+        }
+    }
+
+    @media (min-width: 425px) {
+        .datapickerHistory {
+            float: none !important;
+        }
+    }
+
+    @media (min-width: 768px) {
+        #page-wrapper {
+            position: inherit;
+            margin: 0 0 0 @sidebar-width;
+            min-height: 100vh;
+        } // .announcement-footer
+        .navbar-static-side {
+            z-index: 2001;
+            position: absolute;
+            width: @sidebar-width;
+        }
+        .navbar-top-links .dropdown-messages,
+        .navbar-top-links .dropdown-tasks,
+        .navbar-top-links .dropdown-alerts {
+            margin-left: auto;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .announcementItem .datepicker .uib-datepicker-popup.dropdown-menu {
+            top: 44px !important;
+            left: -22px !important;
+        }
+        .announcementItem .uib-datepicker-popup.dropdown-menu {
+            top: -230px !important;
+            left: 0 !important;
+        }
+        .skin-3 .wrapper-content {
+            padding: 30px 0px; // margin-top: 25px;
+            width: ~"calc(100% - 200px)";
+        }
+        .navbar.navbar-fixed-top {
+            height: 60px;
+        }
+        .panel-custom .panel-body .col-md-4 {
+            width: ~"calc(100% / 3)";
+            float: left;
+        }
+        .userName {
+            text-overflow: ellipsis;
+            width: 100px !important;
+            ;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .taxiCounter,
+        .shuttleCounter {
+            top: -25px;
+        }
+        .navbar-right>li.dropdown:nth-child(n+2) {
+            overflow: hidden;
+        }
+        .announcement-menu {
+            font-size: 23px;
+            color: #ffffff;
+            display: none;
+        }
+        body.mini-navbar .subnav {
+            left: @sidebar-width  !important;
+        }
+        body .subnav {
+            left: 0px;
+        }
+        body.mini-navbar .wrapper-content {
+            display: none;
+        }
+        body.mini-navbar .nameDestination {
+            display: block;
+        }
+        .wrapper-content {
+            padding: 30px 0px;
+            width: ~"calc(100% - 200px)" !important;
+        }
+        .history {
+            // overflow: hidden;
+            padding-top: 10px;
+        }
+        .navbar-right {
+            height: 60px !important;
+            margin-right: 0px !important;
+            float: right !important;
+        }
+        .showDesk>.editable-wrap {
+            width: 50%;
+            float: left;
+        }
+        .announcementElement.date {
+            width: 75%;
+        }
+        .buttons-driver {
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .subnav.announcement>li.active {
+            display: block;
+            background-color: transparent; // width: auto;
+        }
+        .subnav.announcement>li:hover {
+            background-color: transparent;
+        }
+        body.mini-navbar .announcementHeader {
+            display: inline-flex;
+        }
+        .announcement-content {
+            margin-left: 200px; // padding-top: 60px;
+        }
+        #page-wrapper {
+            position: inherit;
+            margin: 0 0 0 0;
+            min-height: 100vh;
+        }
+        .body-small .navbar-static-side {
+            display: none;
+            z-index: 2001;
+            position: absolute;
+            width: 70px;
+        }
+        .body-small.mini-navbar .navbar-static-side {
+            display: block;
+        }
+        .historyNav {
+            float: none;
+            text-align: center;
+        }
+        .historyNav .datepicker {
+            float: none !important;
+            padding-top: 10px;
+        }
+        .lock-word {
+            display: none;
+        }
+        .navbar-form-custom {
+            display: none;
+        }
+        .navbar-header {
+            display: inline-block; // float: left;
+        }
+        .sidebar-panel {
+            z-index: 2;
+            position: relative;
+            width: auto;
+            min-height: 100% !important;
+        }
+        .sidebar-content .wrapper {
+            padding-right: 0;
+            z-index: 1;
+        }
+        .fixed-sidebar.body-small .navbar-static-side {
+            display: none;
+            z-index: 2001;
+            position: fixed;
+            width: @sidebar-width;
+        }
+        .fixed-sidebar.body-small.mini-navbar .navbar-static-side {
+            display: block;
+        }
+        .shuttle-btn.btn-save {
+            width: inherit;
+        }
+        .ibox-tools {
+            float: none;
+            text-align: right;
+            display: block;
+        } // .navbar-static-side { display: none; }
+        body:not(.mini-navbar) {
+            -webkit-transition: background-color 500ms linear;
+            -moz-transition: background-color 500ms linear;
+            -o-transition: background-color 500ms linear;
+            -ms-transition: background-color 500ms linear;
+            transition: background-color 500ms linear;
+            background-color: #f3f3f4
+        }
+    }
+
+    @media(min-width: 576px) {
+        .shuttleCounter.show-on-small,
+        .taxiCounter.show-on-small {
+            display: none;
+        }
+    }
+
+    @media(max-width:575px) {
+        .shuttleCounter.hide-on-small,
+        .taxiCounter.hide-on-small {
+            display: none !important;
+        }
+        .shuttleCounter.show-on-small,
+        .taxiCounter.show-on-small {
+            display: inline-block;
+            background: transparent;
+        }
+        .taxiCounter p a,
+        .shuttleCounter p a,
+            {
+            position: relative;
+        }
+        .shuttleCounter p a i {
+            color: #c575c5;
+        }
+        .taxiCounter p a i {
+            color: #f0b230;
+        }
+        .taxiCounter .count-info .label,
+        .shuttleCounter .count-info .label {
+            right: 1px;
+            border-radius: 4px;
+        }
+    }
+
+    @media(max-width:510px) {
+        .announcementElement:nth-last-child(1) {
+            padding-bottom: 120px;
+        }
+    }
+
+    @media(max-width: 445px) {
+        .navbar-brand {
+            display: none;
+        }
+    }
+
+    @media(min-width: 426px) {
+        .btn-onSmall {
+            display: none;
+        } // .btn-onLarge{
+        //     // display: block;
+        // }
+    }
+
+    @media (max-width: 425px) {
+        .fixed-sidebar.body-small.mini-navbar .navbar-static-side {
+            display: block;
+        }
+        .uib-datepicker-popup.dropdown-menu {
+            // display: block;
+            left: 0 !important;
+        }
+        .navbar-fixed-top>.nav>li>a {
+            padding: 20px 10px !important;
+        }
+        .nav>li>a {
+            padding: 14px 10px 14px 10px !important;
+        }
+        .btn-onSmall {
+            display: block;
+            padding: 5px 5px;
+        }
+        .btn-onLarge {
+            display: none;
+        }
+        .timePick {
+            float: left;
+            width: 50%;
+        }
+        .showNewItemTime>span {
+            width: 50%;
+            float: left;
+        }
+        .shuttleDestination {
+            float: none !important;
+            text-align: center;
+        }
+        .panel-heading {
+            position: relative;
+        }
+        .active-created {
+            position: absolute;
+            top: 2px;
+            right: 0;
+        }
+        .panel-custom .panel-body .col-md-4 {
+            text-align: center;
+            width: 100% !important;
+        }
+        body.mini-navbar .subnav {
+            left: 0px !important;
+        } // body .subnav {
+        //     margin: 0px !important;
+        // }
+        .nameDestination {
+            display: none;
+        }
+        .panel-custom {
+            font-size: 13px;
+        }
+        .mini-navbar .wrapper-content {
+            display: none;
+        }
+        .subnav {
+            min-height: inherit !important;
+            position: relative !important;
+            width: auto !important;
+            left: 0 !important;
+        }
+        .subnav li {
+            display: none;
+        } // .subnav li:active {
+        //     width: ~'calc(100% - 80px)';
+        //     display: inline-block;
+        // }
+        .subnav.closedMenu>li>a {
+            background: transparent !important;
+        }
+        .announcement-menu {
+            width: 10px;
+            display: inline-block;
+        }
+        .subnav.announcement.openedMenu>li {
+            width: 100%;
+            float: none;
+        }
+        .closedMenu>li {
+            display: none;
+            width: auto;
+        }
+        .closedMenu>li.active {
+            width: ~'calc(100% - 80px)';
+            display: inline-block;
+        } // announcementAddOnOpen
+        // .closedMenu>a.announcementAddOnClosed {
+        //     display: none;
+        // }
+        // .closedMenu> display: none;
+        // .closedMenu>.announcementAddOnOpen {
+        //     display: block;
+        //     // display: none;
+        // }
+        .closedMenu>a.announcementAddOnClosed {
+            display: block;
+            float: right;
+        } // .closedMenu>.announcementAddOnOpen {
+        //     display: none;
+        // }
+        .subnav.transportation.closedMenu>li.active,
+        .subnav.shuttle.closedMenu>li.active {
+            width: 100%;
+        } // .announcementAddOnOpen {
+        //     display: none !important;
+        // }
+        .subnav>li.active,
+        .subnav>li>a:hover {
+            box-shadow: none !important;
+            background-color: transparent !important;
+        }
+        .subnav.announcement.closedMenu>li.active,
+        .subnav.events.closedMenu>li.active {
+            width: auto;
+            display: inline-block;
+            margin-left: 15px;
+        }
+        .subnav.announcement>a>i,
+        .subnav.events>a>i {
+            color: #fff;
+            font-size: 14px;
+        }
+        .subnav.announcement>li.active>#btnNewItem,
+        .subnav.events>li.active>#btnNewItem {
+            display: none;
+        }
+        .openedMenu>li {
+            display: block;
+            width: 100%;
+        }
+        .openedMenu>li.active {
+            border: 1px solid rgba(255, 255, 255, 0.75)
+        }
+        .openedMenu>a {
+            display: none;
+        }
+        .announcement-footer {
+            position: relative; // bottom: 0;
+            text-align: center;
+            padding: 10px 30px;
+            background-color: #fff;
+            width: 100%;
+        }
+        .announcement-footer>.btn {
+            margin-top: 5px;
+        }
+        .announcementElement.date {
+            width: 100%;
+        }
+        .skin-3 .wrapper.wrapper-content {
+            padding: 0 !important;
+            width: 100% !important;
+            margin: 0 !important;
+        } // .subnav.announcement>li:first-child {
+        //     border-bottom: none !important;
+        // }
+        // .subnav.announcement>li:first-child a {
+        //     padding: 6px 10px !important;
+        // }
+        .shuttleDestination {
+            text-align: center;
+            margin-top: 10px;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .scheduleDestination {
+            display: flex;
+            justify-content: center;
+            padding-top: 5px;
+        }
+        .weekDay {
+            margin-top: 0;
+        }
+        .shuttleDestination>button {
+            float: none !important;
+        }
+        .historyNav {
+            // overflow: hidden;
+            padding-top: 15px;
+        }
+        .datepicker {
+            padding-top: 10px;
+        }
+        .hist-buttons {
+            text-align: center;
+        }
+        .btn-w-s {
+            min-width: 75px;
+        }
+        .history {
+            padding: 30px 10px !important;
+            overflow: hidden;
+        }
+        .datepicker {
+            float: none !important;
+        }
+        .datepickerRequest {
+            float: none !important;
+            margin: 0 auto;
+            padding-bottom: 10px;
+        }
+        .announcement-content {
+            margin-left: 0;
+        }
+        .announcementElement.date {
+            width: 100%;
+        }
+        .ta-toolbar .btn-group {
+            margin-left: 1px;
+        }
+    }
+
+    @media (max-width: 375px) {
+        .panel-custom .panel-body .col-md-4 {
+            width: 100%;
+        }
+        .panel-custom .panel-footer .btn-w-m {
+            min-width: 112px;
+        }
+        .timeline-item .date {
+            text-align: left;
+            width: 110px;
+            position: relative;
+            padding-top: 30px;
+        }
+        .timeline-item .date i {
+            position: absolute;
+            top: 0;
+            left: 15px;
+            padding: 5px;
+            width: 30px;
+            text-align: center;
+            border: 1px solid @border-color;
+            background: #f8f8f8;
+        }
+        .timeline-item .content {
+            border-left: none;
+            border-top: 1px solid @border-color;
+            padding-top: 10px;
+            min-height: 100px;
+        }
+        .navbar-header {
+            display: inline-block;
+        }
+        .navbar-top-links.navbar-right {
+            float: right !important;
+        }
+        .ibox-tools {
+            float: none;
+            text-align: left;
+            display: inline-block;
+        }
+        .subnav .nav-label {
+            font-size: 14px;
+        }
+        .subnav>li>a {
+            padding: 14px 0 !important;
+        }
+        .destination-list-item-buttons,
+        .destination-list-item-text {
+            padding: 5px;
+        }
+        .panel-custom>.panel-heading {
+            background-color: lightgray;
+            border-color: lightgray;
+            color: #676a6c;
+            padding: 0;
+        }
+    }

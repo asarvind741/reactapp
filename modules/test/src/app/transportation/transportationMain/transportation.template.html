@@ -1,0 +1,41 @@
+<div ng-if="transportationCtrl.show">
+    <div class="row  fadeInLeft" animated fadeInLeft>
+        <ul class="subnav transportation " ng-class="transportationCtrl.statusMenu">
+            <li ui-sref-active="active" ng-click="transportationCtrl.toggleMenu(transportationCtrl.statusMenu)">
+                <a ui-sref="index.transportation.pending">
+                    <span class="nav-label">Pending</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-click="transportationCtrl.toggleMenu(transportationCtrl.statusMenu)">
+                <a ui-sref="index.transportation.active">
+                    <span class="nav-label">Active</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-click="transportationCtrl.toggleMenu(transportationCtrl.statusMenu)">
+                <a ui-sref="index.transportation.destinations">
+                    <span class="nav-label">Destinations</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-click="transportationCtrl.toggleMenu(transportationCtrl.statusMenu)">
+                <a ui-sref="index.transportation.history">
+                    <span class="nav-label">History</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-click="transportationCtrl.toggleMenu(transportationCtrl.statusMenu)">
+                <a ui-sref="index.transportation.cars">
+                    <span class="nav-label">Cars</span>
+                </a>
+            </li>
+            <li ui-sref-active="active" ng-click="transportationCtrl.toggleMenu(transportationCtrl.statusMenu)">
+                <a ui-sref="index.transportation.drivers">
+                    <span class="nav-label">Drivers</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="col-xs-12 col-lg-10 col-md-10 col-sm-10 wrapper wrapper-content">
+
+    <div ui-view></div>
+</div>

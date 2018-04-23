@@ -1,0 +1,41 @@
+<div class="panel panel-custom taxipanel">
+    <div class="panel-heading">
+        <div class="row">
+            <small class="col-sm-3 col-xs-2 text-left"># {{item.id}}</small>
+            <small class="col-sm-6 col-xs-8 text-center">Driver: <strong>{{item.driverName}}</strong> | Car: <strong>{{item.carModel}}</strong> | Number: <strong>{{item.carNumber}}</strong></small>
+            <small class="col-sm-3 col-xs-2 text-right">Created: {{item.creationTime | date : 'dd-MM' }}</small>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 text-left">
+                    {{item.requestorName}} [Badge Nubmer: {{item.badge}} ]
+                    <br> {{item.pickUpPoint}} to {{item.destination}}
+                </div>
+                <div class="col-md-4 col-sm-4 text-center">
+                    <strong>{{item.phoneNomber}}</strong>
+                    <br> {{item.requestTime | date : 'dd.MM.yyyy, HH:mm' :Z }}
+                </div>
+                <div class="col-md-4 col-sm-4 text-right">
+                    <br> {{item.numberOfPassengers}} Passengers
+                </div>
+                <div class="col-md-12 col-sm-12 text-center" ng-if="item.flightNumber">
+                    Flight Number: <strong>{{item.flightNumber}}</strong> ArrivalTime: <strong> {{item.arrivalTime | date : 'HH:mm' :Z}} </strong>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-control-static comment-form">{{item.comment}}</div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <span>Approved by {{item.adminId}}</span>
+        <button type="button " ng-if="activeCtrl.showControls" ng-disabled="item.loading" class="btn btn-success btn-xs btn-w-m pull-right" ng-click="activeCtrl.complete(item)">
+                    Mark as completed
+            </button>
+
+
+    </div>
+</div>

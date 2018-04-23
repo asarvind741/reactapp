@@ -1,0 +1,11 @@
+<div ng-if="announcementDraftItemCtrl.showSpinner" class="p-t-xl">
+    <spinner-directive color=" sk-spinner-announcement"></spinner-directive>
+</div>
+<div ng-if="announcementDraftItemCtrl.showControls">
+    <announcement-draft-item></announcement-draft-item>
+</div>
+
+
+<div ng-if="!announcementDraftItemCtrl.showControls">
+    <announcement-draft-item-for-admin></announcement-draft-item-for-admin>
+</div>

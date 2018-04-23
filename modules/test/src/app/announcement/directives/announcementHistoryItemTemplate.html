@@ -1,0 +1,93 @@
+<div class="announcementItem animated fadeInRight">
+    <h3 class="announcementHeader">Send Community Announcement
+        <button type="button" ng-if="announcementHistoryItemCtrl.showEditButtons" ng-disabled="announcementHistoryItemCtrl.loading" class="btn btn-onSmall btn-default btn-sm pull-right" ng-click="announcementHistoryItemCtrl.delete()">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </button>
+        <button type="button" ng-if="announcementHistoryItemCtrl.showEditButtons" ng-disabled="announcementHistoryItemCtrl.loading" class="btn  btn-onSmall btn-default btn-sm pull-right" ng-click="announcementHistoryItemCtrl.update()">
+          <span class="glyphicon glyphicon-retweet" aria-hidden="true"></span>
+        </button>
+    </h3>
+    <div class="announcementElement">
+        <label class="announcementTitle">Title</label>
+        <input type="text" class="input-group form-control" ng-class="announcementHistoryItemCtrl.errName" maxlength="140" ng-model="announcementHistoryItemCtrl.item.title">
+    </div>
+    <div class="announcementElement">
+        <label class="announcementTitle">Short Description
+          <small>(300 Characters)</small>
+        </label>
+        <input type="text" max="300" class="input-group form-control" maxlength="300" ng-model="announcementHistoryItemCtrl.item.shortDescription">
+    </div>
+    <div class="announcementElement">
+        <label class="announcementTitle">Description </label>
+        <textarea ui-tinymce="announcementHistoryItemCtrl.tinymceOptions" ng-model="announcementHistoryItemCtrl.item.description"></textarea>
+
+    </div>
+    <div class="announcementElement date">
+        <div class="input-group datepickerItem">
+            <span class="input-group-addon" ng-click="announcementHistoryItemCtrl.open()">
+            <label class="announcementTitle date">Date </label>
+          </span>
+            <button type="button" class="btn btn-default full-width" ng-click="announcementHistoryItemCtrl.open()">
+                {{announcementHistoryItemCtrl.date | date : 'dd MMMM yyyy' }}
+         </button>
+            <input type="hidden" class="form-control text-right" uib-datepicker-popup="dd MMMM yyyy" ng-model="announcementHistoryItemCtrl.date" is-open="announcementHistoryItemCtrl.popup.opened" datepicker-options="announcementHistoryItemCtrl.dateOptions" show-button-bar="false"
+            />
+            <span class="input-group-addon" ng-click="announcementHistoryItemCtrl.open()">
+            <i class="fa fa-calendar"></i>
+          </span>
+        </div>
+    </div>
+    <div class="announcementElement">
+        <label class="announcementTitle">Send to</label>
+        <div ng-repeat="announcementGroup in announcementHistoryItemCtrl.announcementGroups " class="announcementItemRadio">
+            <div class="radio">
+                <input type="radio" name="gender" id="{{announcementGroup.id}}" ng-model="announcementHistoryItemCtrl.item.announcementGroup" value="{{announcementGroup.id}}">
+                <label for="{{announcementGroup.id}}">
+                        {{announcementGroup.name}}
+            </label>
+            </div>
+        </div>
+        <label class="emergency">
+          <input type="checkbox" ng-model="announcementHistoryItemCtrl.item.isEmergency" [name="string" ] [ng-true-value="true" ] [ng-false-value="false"
+            ] [ng-change="string" ]> Emergency announcement</label>
+
+    </div>
+    <div class="announcementElement " ng-if="announcementHistoryItemCtrl.item.banner">
+        <label class="announcementTitle">File Uploaded</label>
+        <div class="eventImgHolder banner">
+            <img ng-src="{{announcementHistoryItemCtrl.item.banner}}">
+            <a href="#" class="fileinput-exists eventDelImg" style="float: none" ng-click="announcementHistoryItemCtrl.removeImg()">×</a>
+        </div>
+        <div class="eventImgHolder banner">
+            <img ng-src="{{announcementHistoryItemCtrl.item.previewImage}}">
+            <a href="#" class="fileinput-exists eventDelImg" style="float: none" ng-click="announcementHistoryItemCtrl.removeImg()">×</a>
+        </div>
+    </div>
+    <div class="announcementElement " ng-if="!announcementHistoryItemCtrl.item.banner">
+        <label class="announcementTitle">File Upload</label>
+        <div class="row">
+            <div>
+                <input type="file" id="fileInputId" class="inputfile inputfile-2" />
+                <label for="fileInputId" class="btn btn-default">
+                            <span>Upload File...</span>
+                        </label>
+            </div>
+            <div class="cropArea col-xs-12 col-md-6" ng-if="announcementHistoryItemCtrl.myImage">
+                <ui-cropper result-image-format="jpg" on-load-done="announcementHistoryItemCtrl.loadImage" result-image-quality="100" image="announcementHistoryItemCtrl.myImage" area-type="rectangle" aspect-ratio="0.8" result-blob="announcementHistoryItemCtrl.myCroppedImageBlob"
+                    result-image="announcementHistoryItemCtrl.myCroppedImage" result-image-size="'max'" init-max-area="true"></ui-cropper>
+            </div>
+            <div class=" col-xs-12 col-md-6" ng-if="announcementHistoryItemCtrl.myImage">
+                <div class="previewTitle">Preview:</div>
+                <div><img ng-src="{{announcementHistoryItemCtrl.myCroppedImage}}" style="height:150px" /></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="announcement-footer">
+    <button type="button" ng-disabled="announcementHistoryItemCtrl.loading" class="btn btn-announcement btn-onLarge" ng-click="announcementHistoryItemCtrl.update()">
+        Update
+      </button>
+    <button type="button" ng-disabled="announcementHistoryItemCtrl.loading" class="btn  btn-onLarge btn-default " ng-click="announcementHistoryItemCtrl.delete()">
+        Delete
+      </button>
+</div>

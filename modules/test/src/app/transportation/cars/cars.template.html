@@ -1,0 +1,62 @@
+<!-- <h2>Cars</h2> -->
+<div class="text-center nameDestination animated fadeInRight">
+    <strong>Cars</strong>
+</div>
+<div class="col-md-offset-1 col-md-10 animated fadeInRight">
+    <table class="table carsTables col-xs-6">
+        <thead>
+            <th>
+                Cars
+                <button class="btn btn-sm" ng-click="carsCtrl.addCarForm = !carsCtrl.addCarForm" ng-if="carsCtrl.showControls">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in carsCtrl.carsArr track by $index" ng-if="carsCtrl.carsArr">
+                <td ui-sref-active="active" class="taxiCar">
+                    <form editable-form name="editableForm" onaftersave="carsCtrl.save(item)" class="editable-form text-left">
+                        <span>
+                        <a ui-sref="index.transportation.cars.numbers({ itemID: item.id })"  onbeforesave="carsCtrl.checkName(item.id, $data)" editable-text="item.name" e-name="name" e-required> {{ item.name || 'empty' }}</a>
+                        </span>
+                        <div class="buttons pull-right" ng-if="carsCtrl.showControls">
+                            <button type="button" class="btn btn-warning btn-sm" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm" ng-disabled="item.loading" ng-click="carsCtrl.delete(item)" ng-show="!editableForm.$visible">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                            <span ng-show="editableForm.$visible">
+                                <button type="submit" class="btn btn-warning btn-sm" ng-disabled="editableForm.$waiting">
+                                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-sm" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                    <i class="fa fa-ban" aria-hidden="true"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            <tr ng-if="carsCtrl.addCarForm">
+                <td>
+                    <div class="col-md-offset-1 col-md-10 destination-list-item " ng-if="carsCtrl.addCarForm">
+                        <div class="col-xs-9 text-right destination-list-item-text">
+                            <span class="editable-wrap editable-text ng-scope">
+                                <div class="editable-controls  form-group">
+                                    <input type="text" ng-model="carsCtrl.newCar.name" class="editable-input form-control">
+                                </div>
+                            </span>
+                        </div>
+                        <div class="buttons">
+                            <button type="button" class="btn btn-warning" ng-disabled="carsCtrl.newCar.loading" ng-click="carsCtrl.add(carsCtrl.newCar)">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ui-view></ui-view>
+</div>

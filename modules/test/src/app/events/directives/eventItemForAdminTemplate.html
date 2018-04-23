@@ -1,0 +1,78 @@
+<div class="eventBody">
+    <h3 class=" eventHeader ">
+        Community Activity or Event
+    </h3>
+    <div class="eventElement ">
+        <label class="eventLabel ">Title</label>
+        <span class="input-group form-control">{{eventsItemCtrl.item.name}}</span>
+    </div>
+    <div class="eventElement ">
+        <label class="eventLabel ">Short Description
+                </label>
+        <span class="input-group form-control">{{eventsItemCtrl.item.shortDescription}}</span>
+    </div>
+    <div class="eventElement ">
+        <label class="eventLabel ">Description </label>
+        <textarea ui-tinymce="eventsItemCtrl.tinymceOptions" ng-model="eventsItemCtrl.item.description"></textarea>
+    </div>
+    <div class="eventElement ">
+        <label class="eventLabel ">Date & Location </label>
+        <div class="row ">
+            <div class="col-sm-6 ">
+                <span class="input-group form-control">{{eventsItemCtrl.item.creationDate | date : 'dd.MM.yyyy' :Z }}</span>
+            </div>
+            <div class="col-sm-6 ">
+                <span class="input-group form-control">{{eventsItemCtrl.item.location}}</span>
+            </div>
+        </div>
+        <div class="clearfix "></div>
+    </div>
+    <div class="eventElement">
+        <label class="eventLabel ">Time </label>
+        <div class="row ">
+            <div class="col-sm-6">
+                <span class="input-group form-control">{{eventsItemCtrl.item.timeOfEvent}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="eventElement ">
+        <label class="eventLabel ">Banner</label>
+        <div class="eventImgHolder banner">
+            <img ng-src="{{eventsItemCtrl.item.banner}}">
+        </div>
+        <div class="eventImgHolder banner">
+            <img ng-src="{{eventsItemCtrl.item.previewImage}}">
+        </div>
+    </div>
+    <div class="eventElement">
+        <label class="eventLabel">Images</label>
+        <div class="imgContainer">
+            <div ng-repeat="img in eventsItemCtrl.item.eventImages" class="eventImgHolder">
+                <img ng-src="{{img.imageURL}}">
+            </div>
+        </div>
+    </div>
+    <div class="eventElement">
+        <label class="eventLabel">Repeated Event</label>
+        <div class="row">
+            <div class="col-sm-6">
+                <span class="input-group form-control">{{eventsItemCtrl.item.status}}</span>
+            </div>
+            <div class="col-sm-6">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                                    When
+                            </span>
+                    <div class="whenField text-right form-control-static">
+                        {{eventsItemCtrl.whenDate}}
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="eventElement">
+        <label class="eventLabel">Remark</label>
+        <span class="input-group form-control">{{eventsItemCtrl.item.remark}}</span>
+    </div>
+</div>
