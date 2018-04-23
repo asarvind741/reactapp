@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <button type="button" class="close" aria-label="Close" ng-click="modalDeleteEventCtrl.cancel()">
+            <!-- <button type="button" class="close" aria-label="Close" ng-click="modalDeleteEventCtrl.cancel()"> -->
+            <span aria-hidden="true">&times;</span>
+        </button>
+    <h4 class="modal-title">Delete Event/Activity</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-12" ng-if="modalDeleteEventCtrl.showMsgRepeat">
+            Delete <strong>{{modalDeleteEventCtrl.item.name}}</strong>. Date of event {{modalDeleteEventCtrl.item.creationDate | date : 'dd-MM-yyyy'}}. Choose delete options:
+            <div ng-repeat="deleteGroup in modalDeleteEventCtrl.deleteGroups " class="announcementItemRadio">
+                <div class="radio">
+                    <input type="radio" name="gender" id="{{deleteGroup.id}}" ng-model="modalDeleteEventCtrl.item.deleteGroup" value="{{deleteGroup.id}}">
+                    <label for="{{deleteGroup.id}}">
+                                                    {{deleteGroup.name}}
+                    </label>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-sm-12" ng-if="modalDeleteEventCtrl.showMsgNoRepeat">
+            Delete <strong>{{modalDeleteEventCtrl.item.name}}</strong>. Date of event {{modalDeleteEventCtrl.item.creationDate | date : 'dd-MM-yyyy'}}.
+        </div>
+        <div class="col-sm-12" ng-if="modalDeleteEventCtrl.showMsgDraft">
+            Delete <strong>{{modalDeleteEventCtrl.item.name}}</strong>.
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="modalDeleteEventCtrl.cancel()">
+            Cancel
+        </button>
+    <button class="btn  btn-events " type="button" ng-click="modalDeleteEventCtrl.ok(modalDeleteEventCtrl.item)">
+            OK
+        </button>
+
+</div>

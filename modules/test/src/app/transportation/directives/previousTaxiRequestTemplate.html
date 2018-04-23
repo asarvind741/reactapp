@@ -1,0 +1,64 @@
+<div class="panel panel-custom taxipanel">
+    <div class="panel-heading text-center" ng-if="activeCtrl.showControls">
+        <div class="inline col-xs-2 text-left pull-left">
+            <small># {{item.id}}</small>
+        </div>
+        <div class="inline selects" ng-if="activeCtrl.showControls">
+            <select class="inline inline col-xs-8  col-md-offset-0 col-sm-offset-0 col-md-4 col-sm-4 " ng-model="item.driver">
+                    <option ng-repeat="driver in activeCtrl.driversArr  track by $index" value="{{driver.id}}">{{driver.name}}</option>
+                </select>
+            <select ng-options="item.numbers as item.modelName for item in activeCtrl.availTaxiCars" class="inline inline col-xs-8 col-xs-offset-2 col-md-offset-0 col-sm-offset-0 col-md-4 col-sm-4" ng-model="numbers">
+                </select>
+            <select ng-options="item.id as item.number for item in numbers" class="inline inline col-xs-8 col-xs-offset-2 col-md-offset-0 col-sm-offset-0 col-md-4 col-sm-4" ng-model="item.number">
+                </select>
+        </div>
+        <div class="active-created inline col-xs-2 pull-right" ng-if="activeCtrl.showControls">
+            <small class="pull-right">Created: {{item.creationTime | date : 'dd-MM' }}</small>
+        </div>
+    </div>
+
+    <div class="panel-heading text-right" ng-if="!activeCtrl.showControls">
+        <div class="inline text-left pull-left">
+            <small># {{item.id}}</small>
+        </div>
+        <div class="active-created inline">
+            <small>Created: {{item.creationTime | date : 'dd-MM' }}</small>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 text-left">
+                    {{item.requestorName}} [Badge Nubmer: {{item.badge}} ]
+                    <br> {{item.pickUpPoint}} to {{item.destination}}
+                </div>
+
+
+                <div class="col-md-4 col-sm-4  text-center">
+                    <strong>{{item.phoneNomber}}</strong>
+                    <br> {{item.requestTime | date : 'dd.MM.yyyy, HH:mm' :Z}}
+                </div>
+
+                <div class="col-md-4 col-sm-4  text-right">
+                    <br> {{item.numberOfPassengers}} Passengers
+                </div>
+                <div class="col-md-12 col-sm-12 text-center" ng-if="item.flightNumber">
+                    Flight Number: <strong>{{item.flightNumber}}</strong> ArrivalTime: <strong>{{item.arrivalTime | date : 'HH:mm' :Z}}</strong>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="comment-form form-control-static">{{item.comment}}</div>
+        </div>
+
+    </div>
+    <div class="panel-footer">
+        <button type="button" class="btn btn-success btn-xs btn-w-m " ng-if="activeCtrl.showControls" ng-disabled="item.loading" ng-click="activeCtrl.assign(item)">
+                Assign
+            </button>
+
+        <button type="button " ng-if="activeCtrl.showControls" ng-disabled="item.loading" class="btn btn-success btn-xs btn-w-m pull-right" ng-click="activeCtrl.complete(item)">
+                    Mark as completed
+            </button>
+    </div>
+</div>

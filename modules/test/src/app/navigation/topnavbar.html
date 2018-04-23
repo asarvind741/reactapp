@@ -1,0 +1,92 @@
+<div class="border-bottom">
+    <nav class="navbar navbar-fixed-top white-bg" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header text-left">
+            <span minimaliza-sidebar></span>
+            <span class="navbar-brand">Admin Panel</span>
+        </div>
+        <ul class="nav navbar-top-links navbar-right text-right">
+            <li class="taxiCounter hide-on-small" ng-if="contentCtrl.access.transportation != 'none'">
+                <p>
+                    Taxi
+                    <span class="label label-primary swap-animation" ng-animate-swap="contentCtrl.taxiCounter">{{contentCtrl.taxiCounter}}</span> 30min <span class="label label-primary  swap-animation" ng-animate-swap="contentCtrl.thirthyMinCounter">{{contentCtrl.thirthyMinCounter}}</span>                    Expired <span class="label label-primary  swap-animation" ng-animate-swap="contentCtrl.expiredCounter">{{contentCtrl.expiredCounter}}</span>
+                </p>
+            </li>
+            <li class="shuttleCounter hide-on-small" ng-if="contentCtrl.access.shuttle != 'none'">
+                <p>
+                    Shuttle <span class="label label-primary  swap-animation" ng-animate-swap="contentCtrl.shuttleCounter">{{contentCtrl.shuttleCounter}}</span>
+                </p>
+            </li>
+            <li class="taxiCounter show-on-small" ng-if="contentCtrl.access.transportation != 'none'">
+                <p>
+                    <a class="count-info">
+                        <i class="fa fa-taxi"></i>
+                        <span class="label label-primary swap-animation" ng-animate-swap="contentCtrl.taxiCounter">{{contentCtrl.taxiCounter}}</span>
+                    </a>
+                    <a class="count-info">
+                        <i class="fa fa-clock-o"></i>
+                        <span class="label label-primary swap-animation" ng-animate-swap="contentCtrl.thirthyMinCounter">{{contentCtrl.thirthyMinCounter}}</span>
+                    </a>
+                    <a class="count-info">
+                        <i class="fa fa-hourglass-end"></i>
+                        <span class="label label-primary swap-animation" ng-animate-swap="contentCtrl.expiredCounter">{{contentCtrl.expiredCounter}}</span>
+                    </a>
+
+                </p>
+            </li>
+            <li class="shuttleCounter show-on-small" ng-if="contentCtrl.access.shuttle != 'none'">
+                <p>
+                    <a class="count-info">
+                        <i class="fa fa-bus"></i>
+                        <span class="label label-primary  swap-animation" ng-animate-swap="contentCtrl.shuttleCounter">{{contentCtrl.shuttleCounter}}</span>
+                    </a>
+                </p>
+            </li>
+            <li uib-dropdown>
+                <a href uib-dropdown-toggle class="userName"> {{contentCtrl.user.fullName}}
+                    <span class="caret"></span>
+                </a>
+                <ul role="menu" uib-dropdown-menu class="animated fadeInRight m-t-xs">
+                    <li>
+                        <a ng-click="contentCtrl.logout()">
+                            <i class="fa fa-sign-out"></i> Log out
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- <li uib-dropdown>
+                <a class="count-info" href uib-dropdown-toggle>
+                    <i class="fa fa-bell-o"></i>
+                    <span class="label label-primary">1</span>
+                </a>
+                <ul class="dropdown-alerts" uib-dropdown-menu>
+                    <li>
+                        <a>
+                            <div>
+                                <i class="fa fa-envelope-o fa-fw"></i> You have 1 message
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                </ul>
+            </li>
+            <li uib-dropdown>
+                <a class="count-info" href uib-dropdown-toggle>
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="label label-warning">2</span>
+                </a>
+                <ul class="dropdown-alerts" uib-dropdown-menu>
+                    <li>
+                        <a>
+                            <div>
+                                <i class="fa fa-envelope-o fa-fw"></i> You have 2 message
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                </ul>
+            </li> -->
+
+        </ul>
+    </nav>
+</div>

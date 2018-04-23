@@ -1,0 +1,85 @@
+<div class="eventBody">
+    <h3 class=" announcementHeader ">Community Activity or Event
+    </h3>
+    <div class="eventElement ">
+        <label class="eventLabel ">Title</label>
+        <span class="input-group form-control">{{eventHistoryItemCtrl.item.name}}</span>
+    </div>
+    <div class="eventElement ">
+        <label class="eventLabel ">Short Description
+        </label>
+        <span class="input-group form-control">{{eventHistoryItemCtrl.item.shortDescription}}</span>
+    </div>
+    <div class="eventElement ">
+        <label class="eventLabel ">Description </label>
+        <textarea ui-tinymce="eventHistoryItemCtrl.tinymceOptions" ng-model="eventHistoryItemCtrl.item.description"></textarea>
+    </div>
+    <div class="eventElement ">
+        <label class="eventLabel ">Date & Location </label>
+        <div class="row ">
+            <div class="col-sm-6 ">
+                <span class="input-group form-control">{{eventHistoryItemCtrl.item.dateOfEvent | date : 'dd.MM.yyyy' :Z }}</span>
+            </div>
+            <div class="col-sm-6 ">
+                <span class="input-group form-control">{{eventHistoryItemCtrl.item.location}}</span>
+            </div>
+        </div>
+        <div class="clearfix "></div>
+    </div>
+
+    <div class="eventElement">
+        <label class="eventLabel ">Time </label>
+        <div class="row ">
+            <div class="col-sm-6">
+                <span class="input-group form-control">{{eventHistoryItemCtrl.item.timeOfEvent}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="eventElement ">
+        <label class="eventLabel ">Banner</label>
+        <div class="eventImgHolder banner">
+            <img ng-src="{{eventHistoryItemCtrl.item.banner}}">
+        </div>
+        <div class="eventImgHolder banner">
+            <img ng-src="{{eventHistoryItemCtrl.item.previewImage}}">
+        </div>
+    </div>
+    <div class="eventElement">
+        <label class="eventLabel">Images</label>
+        <div class="imgContainer">
+            <div ng-repeat="img in eventHistoryItemCtrl.item.eventHistoryImages" class="eventImgHolder">
+                <img ng-src="{{img.imageURL}}">
+            </div>
+        </div>
+    </div>
+    <div class="eventElement">
+        <label class="eventLabel">Repeated Event</label>
+        <div class="row">
+            <div class="col-sm-6">
+                <span class="input-group form-control">{{eventHistoryItemCtrl.item.status}}</span>
+            </div>
+            <div class="col-sm-6">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                            When
+                        </span>
+                    <div class="whenField text-right form-control-static">
+                        {{eventHistoryItemCtrl.whenDate}}
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="eventElement ">
+        <label class="eventLabel ">Remark
+            </label>
+        <span class="input-group form-control">{{eventHistoryItemCtrl.item.remark}}</span>
+    </div>
+</div>
+
+<div class="eventFooter" ng-if="eventHistoryItemCtrl.showControls">
+    <button type="button" class="btn btn-default" ng-click="eventHistoryItemCtrl.save()" ng-model="eventHistoryItemCtrl.loading" ng-disabled="eventHistoryItemCtrl.loading">
+        Save as Draft
+    </button>
+</div>

@@ -1,0 +1,68 @@
+<div class="text-center nameDestination animated fadeInRight">
+    <strong>{{shuttlesCtrl.name}}</strong>
+</div>
+<div ng-if="shuttlesCtrl.carsArr.length  == 0">
+    <p class="text-center">
+        <span ng-if="!shuttlesCtrl.showSpinner">There are no items</span>
+    </p>
+</div>
+
+<div class="col-md-offset-1 col-md-10 animated fadeInRight" ng-if="shuttlesCtrl.carsArr.length  > 0">
+    <table class="table carsTables table-hover col-xs-6">
+        <thead>
+            <th>
+                {{shuttlesCtrl.name}}
+                <button class="btn btn-sm" ng-click="shuttlesCtrl.addCarForm = !shuttlesCtrl.addCarForm" ng-if="shuttlesCtrl.showControls">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </th>
+
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in shuttlesCtrl.carsArr track by $index" ng-if="shuttlesCtrl.carsArr">
+                <td ui-sref-active="active" class="shuttleCar">
+                    <form editable-form name="editableForm" onaftersave="shuttlesCtrl.save(item)" class="editable-form text-left">
+                        <span>
+                        <a ui-sref="index.shuttle.shuttles.numbers({ itemID: item.id })"  onbeforesave="shuttlesCtrl.checkName(item.id, $data)" editable-text="item.name" e-name="name" e-required> {{ item.name || 'empty' }}</a>
+                        </span>
+                        <div class="buttons pull-right" ng-if="shuttlesCtrl.showControls">
+                            <button type="button" class="btn shuttle-btn btn-sm" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn- btn-primary btn-sm" ng-disabled="item.loading" ng-click="shuttlesCtrl.delete(item)" ng-show="!editableForm.$visible">
+                                <i class="fa fa-trash-o"></i>
+                            </button>
+                            <span ng-show="editableForm.$visible">
+                                <button type="submit" class="btn shuttle-btn btn-sm" ng-disabled="editableForm.$waiting">
+                                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-sm" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                    <i class="fa fa-ban" aria-hidden="true"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            <tr ng-if="shuttlesCtrl.addCarForm">
+                <td>
+                    <div class="col-md-offset-1 col-md-10 destination-list-item " ng-if="shuttlesCtrl.addCarForm">
+                        <div class="col-xs-9 text-right destination-list-item-text">
+                            <span class="editable-wrap editable-text ng-scope">
+                                <div class="editable-controls  form-group">
+                                    <input type="text" ng-model="shuttlesCtrl.newCar.name" class="editable-input form-control">
+                                </div>
+                            </span>
+                        </div>
+                        <div class="buttons">
+                            <button type="button" class="btn shuttle-btn" ng-disabled="shuttlesCtrl.newCar.loading" ng-click="shuttlesCtrl.add(shuttlesCtrl.newCar)">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ui-view></ui-view>
+</div>

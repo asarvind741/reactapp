@@ -1,0 +1,49 @@
+<div class="announcementHistoryView animated fadeInRight">
+    <div class="text-center">
+        <div class="col-sm-8">
+            <h2 class="historyTitle">{{announcementHistoryCtrl.name}}</h2>
+        </div>
+        <div class="input-group pull-right datapickerHistory col-sm-4 col-xs-10 col-xs-offset-1 text-right datepicker">
+            <button type="button" class="btn btn-default full-width" ng-click="announcementHistoryCtrl.open()">
+                        {{announcementHistoryCtrl.date | date : 'MMMM yyyy' }}
+                 </button>
+            <input type="hidden" class="form-control" ng-disabled="announcementHistoryCtrl.showSpinner" uib-datepicker-popup="MMMM yyyy" ng-model="announcementHistoryCtrl.date" is-open="announcementHistoryCtrl.popup.opened" datepicker-options="announcementHistoryCtrl.dateOptions"
+                show-button-bar="false" type="month" ng-click="announcementHistoryCtrl.open()" close-on-date-selection="true" on-open-focus="false" />
+            <span class="input-group-addon">
+                <i class="fa fa-calendar" ng-disabled="announcementHistoryCtrl.showSpinner" ng-click="announcementHistoryCtrl.open()"></i>
+            </span>
+        </div>
+    </div>
+    <div ng-if="announcementHistoryCtrl.showSpinner" class="m-t-xll">
+        <spinner-directive color=" sk-spinner-announcement"></spinner-directive>
+    </div>
+    <div class="col-md-12" ng-if="!announcementHistoryCtrl.showSpinner">
+        <div ng-if=" announcementHistoryCtrl.arr.length == 0" class="text-center nameDestination">
+            There are no items
+        </div>
+        <table ng-if="announcementHistoryCtrl.arr.length > 0" class="table table-condensed">
+            <thead>
+                <tr>
+                    <th class="col-md-3 col-xs-3" ng-click="announcementHistoryCtrl.sortBy('creationDate')">
+                        Send Date</th>
+                    <th class="col-md-3 col-xs-3" ng-click="announcementHistoryCtrl.sortBy('title')">
+                        Title</th>
+                    <th class="col-md-3 col-xs-3" ng-click="announcementHistoryCtrl.sortBy('group')">
+                        Sent To</th>
+                    <th class="col-md-3 col-xs-3" ng-click="announcementHistoryCtrl.sortBy('sendDate')">
+                        Announcement Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="announcement in announcementHistoryCtrl.arr | orderBy: announcementHistoryCtrl.sortField " ui-sref="index.announcement.historyItem({ historyItemID: announcement.id })" class="pointer">
+                    <div class="row">
+                        <td>{{announcement.creationDate | date : 'dd-MM-yyyy'}}</td>
+                        <td>{{announcement.title}}</td>
+                        <td>{{announcement.group}}</td>
+                        <td>{{announcement.sendDate | date : 'dd-MM-yyyy'}}</td>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
